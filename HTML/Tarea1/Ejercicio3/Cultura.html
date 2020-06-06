@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<style>
+    /* Principio Menu Bar */
+    
+    body {
+        background: #e1e8ed;
+    }
+    
+    .menuBar {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0 0 0;
+        list-style: none;
+        background: #1da1f2;
+        border-radius: 50px;
+    }
+    
+    .menuBar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: absolute;
+        top: 35px;
+        left: 0;
+        background: #222;
+    }
+    
+    .menuBar li {
+        float: left;
+        padding: 0 0 10px 0;
+        margin-left: 7.5%;
+        position: relative;
+    }
+    
+    .menuBar a {
+        float: left;
+        height: 25px;
+        padding: 0 25px;
+        color: #f5f8fa;
+        font: bold 24px/25px Arial, Helvetica;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #000;
+    }
+    
+    .menuBar li:hover>a {
+        color: #14171A;
+    }
+    
+    .menuBar::after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: "";
+        clear: both;
+        height: 0;
+    }
+    
+    .menuBar li .active {
+        color: black;
+    }
+    /* Fin Menu Bar */
+    /* Inicio Galeria de Fotos Tipo Cards */
+    
+    .galeria {
+        background: #AAB8C2;
+        margin: 0 0 0 25px;
+        height: 15em;
+        width: 22em;
+    }
+    
+    .galeria .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    
+    .galeria:hover {
+        background: #AAB8C2;
+        padding: 0 18em 0 0;
+    }
+    
+    .galeria h1 {
+        text-align: center;
+    }
+    
+    .galeria .imagen {
+        float: left;
+        width: 10%;
+    }
+    
+    .galeria .imagen img {
+        margin: 0 0 0 15px;
+        height: 150px;
+        width: 300px;
+    }
+    
+    .galeria .texto {
+        float: left;
+        width: 90%;
+        position: relative;
+        left: 80%;
+        top: 15px;
+        color: #14171A;
+        display: none;
+    }
+    
+    .galeria:hover .texto {
+        display: block;
+    }
+    
+    .galeria p {
+        margin: 0 0 25px 15px;
+    }
+    
+    .galeria #less {
+        display: none;
+    }
+    
+    .galeria:hover>#less {
+        display: block;
+    }
+    
+    .galeria:hover>#more {
+        display: none;
+    }
+    
+    .column {
+        float: left;
+        width: 50%;
+    }
+    /* FIn Galeria de Fotos Tipo Cards */
+</style>
+
+<body>
+    <ul class="menuBar">
+        <li><a href="Index.html">Home</a></li>
+        <li><a class="active" href="Cultura.html">Cultura</a></li>
+        <li><a href="Deportes.html">Deportes</a></li>
+        <li><a href="https://eldia.com.do/" target="_blank">Periodico El Día</a></li>
+        <li><a href="mailto: freddy.sotof19@gmail.com">Sugerencias</a></li>
+    </ul>
+    <div class="row">
+        <div class="column">
+            <div class="galeria">
+                <h1>Música</h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/merengue.jpg" />
+                    </div>
+                    <div class="texto">
+                        <p><b>El merengue</b> es un género musical bailable originado en la República Dominicana a finales del siglo XIX. Es muy popular en todo el continente americano, donde es considerado, junto con la salsa, como uno de los grandes géneros
+                            musicales bailables que distinguen el género latinoamericano</b>
+                        </p>
+                    </div>
+                </div>
+                <p id="more"><i>Ponga el mouse aqui para ver mas informacion</i></p>
+                <p id="less"><i>Mueva el mouse fuera para ocultar la informacion</i></p>
+            </div>
+        </div>
+        <div class="column">
+            <div class="galeria">
+                <h1>Gastronomía</h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/bandera.jpg" />
+                    </div>
+                    <div class="texto">
+                        <p>La <b>comida dominicana</b> tiene una clara influencia criolla, es decir, con influencia europea pero desarrollada en América y con ciertos rasgos africanos. Tiene una gran importancia el arroz, la carne, los frijoles o los vegetales,
+                            lo que se percibe en sus platos más típicos como <i>la bandera</i> </p>
+                    </div>
+                </div>
+                <p id="more"><i>Ponga el mouse aqui para ver mas informacion</i></p>
+                <p id="less"><i>Mueva el mouse fuera para ocultar la informacion</i></p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="column">
+            <div class="galeria">
+                <h1>Tradiciones</h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/carnaval.jpg" />
+                    </div>
+                    <div class="texto">
+                        <p>Aunque si existe una por excelencia dentro de las tradiciones dominicanas esa es el <b><i>Carnaval</i></b>, que además suele coincidir con las fiestas patrias. Las distintas ciudades organizan sus desfiles en los cuales se nota
+                            la influencia de diferentes culturas. </p>
+                    </div>
+                </div>
+                <p id="more"><i>Ponga el mouse aqui para ver mas informacion</i></p>
+                <p id="less"><i>Mueva el mouse fuera para ocultar la informacion</i></p>
+
+            </div>
+        </div>
+        <div class="column">
+            <div class="galeria">
+                <h1>Entretenimiento</h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/baseball.jpg" />
+                    </div>
+                    <div class="texto">
+                        <p>Se trata del deporte oficial del país y el mayor Entretenimiento, desde que lo introdujeron los inmigrantes cubanos, y ahora mismo puede presumir de que la República Dominicana es uno de los mayores exportadores de jugadores de
+                            béisbol del mundo.
+                        </p>
+                    </div>
+                </div>
+                <p id="more"><i>Ponga el mouse aqui para ver mas informacion</i></p>
+                <p id="less"><i>Mueva el mouse fuera para ocultar la informacion</i></p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

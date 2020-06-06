@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<style>
+    body {
+        background: #e1e8ed;
+    }
+    /* Principio Menu Bar */
+    
+    .menuBar {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0 0 0;
+        list-style: none;
+        background: #1da1f2;
+        border-radius: 50px;
+    }
+    
+    .menuBar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: absolute;
+        top: 35px;
+        left: 0;
+        background: #222;
+    }
+    
+    .menuBar li {
+        float: left;
+        padding: 0 0 10px 0;
+        margin-left: 7.5%;
+        position: relative;
+    }
+    
+    .menuBar a {
+        float: left;
+        height: 25px;
+        padding: 0 25px;
+        color: #f5f8fa;
+        font: bold 24px/25px Arial, Helvetica;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #000;
+    }
+    
+    .menuBar li:hover>a {
+        color: #14171A;
+    }
+    
+    .menuBar::after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: "";
+        clear: both;
+        height: 0;
+    }
+    
+    .header {
+        margin-top: 25px;
+        padding: 60px;
+        text-align: center;
+        background: #657786;
+        color: white;
+        font-size: 30px;
+    }
+    
+    .menuBar li .active {
+        color: black;
+    }
+    /* Fin Menu Bar */
+</style>
+
+<body>
+    <ul class="menuBar">
+        <li><a class="active" href="Index.html">Home</a></li>
+        <li><a href="Cultura.html">Cultura</a></li>
+        <li><a href="Deportes.html">Deportes</a></li>
+        <li><a href="https://eldia.com.do/" target="_blank">Periodico El Día</a></li>
+        <li><a href="mailto: freddy.sotof19@gmail.com">Sugerencias</a></li>
+    </ul>
+    <div class="header">
+        <h1>Acerca de Nosotros!</h1>
+        <p>Somos una empresa dedicada al desarrollo de pagina web y aqui te traemos una pequeña demostracion de como se veria la tuya si decides hacerlas con nosotros!</p>
+    </div>
+</body>
+
+</html>

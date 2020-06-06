@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<style>
+    body {
+        background-image: url('./Assets/imgs/wallpaper.jpg');
+    }
+    
+    .galeria {
+        background: #2b2b2b;
+        margin: 0 0 0 25px;
+        height: 20em;
+        width: 24em;
+        border-radius: 50px;
+    }
+    
+    .galeria .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /*     
+    .galeria:hover {
+        background: #AAB8C2;
+        padding: 0 18em 0 0;
+    } */
+    
+    .galeria h1 {
+        position: relative;
+        text-align: center;
+        color: white;
+        top: 15px;
+    }
+    
+    .galeria .imagen {
+        float: left;
+        width: 10%;
+    }
+    
+    .galeria .imagen img {
+        margin: 0 0 0 3em;
+        height: 200px;
+        width: 280px;
+        border-radius: 20px;
+        border-color: black;
+        border-style: solid;
+    }
+    
+    .galeria .imagen>.precio {
+        height: 1.2em;
+        width: 4.5em;
+        background: #08ae08;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        font-family: 'verdana';
+        position: relative;
+        top: -32px;
+        left: 60px;
+        cursor: context-menu;
+        border-radius: 5px;
+    }
+    
+    .galeria p {
+        margin: 0 0 25px 15px;
+    }
+    
+    .infobutton {
+        position: relative;
+        left: 3.5em;
+        top: -1.2em;
+        background-color: #ee1c23;
+        padding: .5em;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+        border-radius: 6px;
+        color: #fff;
+        font-family: 'Oswald';
+        font-size: 20px;
+        text-decoration: none;
+        border: none;
+        cursor: pointer;
+    }
+    
+    .infobutton:hover {
+        border: none;
+        background: #009867;
+        box-shadow: 0px 0px 1px #777;
+    }
+    
+    .column {
+        float: left;
+        width: 33.2%;
+    }
+    /* FIn Galeria de Fotos Tipo Cards */
+    
+    .titulo {
+        text-align: center;
+        font-size: 48px;
+        letter-spacing: 1px;
+        color: white;
+        /* color: #D0F8FF; */
+        text-shadow: 0 0 5px #08ae08, 0 0 10px #08ae08, 0 0 20px #08ae08, 0 0 30px #08ae08, 0 0 40px #08ae08;
+    }
+    /* Modal Css */
+    /* The Modal (background) */
+    
+    .modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        z-index: 1;
+        /* Sit on top */
+        padding-top: 100px;
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.4);
+        /* Black w/ opacity */
+    }
+    /* Modal Content */
+    
+    .modal-content {
+        position: relative;
+        background-color: #fefefe;
+        margin: auto;
+        padding: 0;
+        border: 1px solid #888;
+        width: 40%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-animation-name: animatetop;
+        -webkit-animation-duration: 0.4s;
+        animation-name: animatetop;
+        animation-duration: 0.4s
+    }
+    /* Add Animation */
+    
+    @-webkit-keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+    
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+    /* The Close Button */
+    
+    .close {
+        color: white;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    
+    .modal-header {
+        padding: 2px 16px;
+        background-color: #ee1c23;
+        color: white;
+    }
+    
+    .modal-body {
+        padding: 2px 16px;
+    }
+</style>
+
+<body>
+    <!-- <img src="./Assets/imgs/banner.jpg" height="200em" width="100%"> -->
+    <h1 class="titulo">Ofertas del mes de Junio</h1>
+    <div class="row">
+        <div class="column">
+            <div class="galeria">
+
+                <h1><i>¡La Personal!</i></h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/imgs/mozarella1.png" />
+                        <div class="precio">&euro; 5.00</div>
+                    </div>
+
+                </div>
+                <button class="infobutton" onclick="OpenModal('modalPersonal')" type="button">Ver más acerca de esta oferta</button>
+            </div>
+        </div>
+        <div class="column">
+            <div class="galeria">
+
+                <h1><i>¡La favorita de Cupido!</i></h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/imgs/2mozarella.jpg" />
+                        <div class="precio">&euro; 6.00</div>
+                    </div>
+
+                </div>
+                <button class="infobutton" onclick="OpenModal('modalCupido')" type="button">Ver más acerca de esta oferta</button>
+            </div>
+        </div>
+        <div class="column">
+            <div class="galeria">
+
+                <h1><i>¡Para todos!</i></h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/imgs/4pizza.jpg" />
+                        <div class="precio">&euro; 10.00</div>
+                    </div>
+
+                </div>
+                <button class="infobutton" onclick="OpenModal('modalTodos')" type="button">Ver más acerca de esta oferta</button>
+            </div>
+
+        </div>
+    </div>
+    <!-- Modal Pizza Personal -->
+    <div id="modalPersonal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Oferta Pizza &nbsp;
+                    <cite>La Personal</cite>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p>Llévate 1 Pizza Mozarella de 1 ingrediente & una Cola 16 oz por <b>&euro; 5.00</b> imp. incl., disponible para Carry Out.</p>
+                <p>Esta oferta aplica para delivery</p>
+                <p>Ingredientes: Combinación de quesos: mozzarella, provolone, parmesano, romano, asiago y fontina. </p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Pizza Cupido -->
+    <div id="modalCupido" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Oferta Pizza &nbsp;
+                    <cite>La Favorita de Cupido</cite>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p><b>Por que peliar por el ingrediente de la pizza, si ambos pueden pedir una de su ingrediente favorita?</b></p>
+                <p>Llévate 2 Pizza Mozarella de 1 ingrediente cada una por <b>&euro; 6.00</b> imp. incl., disponible para Carry Out.</p>
+                <p>Esta oferta aplica para delivery</p>
+                <p>Ingredientes: Combinación de quesos: mozzarella, provolone, parmesano, romano, asiago y fontina. </p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Pizza para Todos -->
+    <div id="modalTodos" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Oferta Pizza &nbsp;
+                    <cite>Para Todos</cite>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p><b>Esta oferta es perfecta para reuniones entre amigos y familiares.</b></p>
+                <p><b>Ahorra tiempo y energia solicitando que te enviemos esta pizza!</b></p>
+                <p>Llévate 4 Pizza Mozarella de 1 ingrediente cada una por tan solo <b>&euro; 10.00</b> imp. incl., disponible para Carry Out.</p>
+                <p>Esta oferta aplica para delivery</p>
+                <p>Ingredientes: Combinación de quesos: mozzarella, provolone, parmesano, romano, asiago y fontina. </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function OpenModal(selector) {
+        var modal = document.getElementById(selector);
+        var span = document.getElementById(selector).getElementsByClassName("close")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</html>

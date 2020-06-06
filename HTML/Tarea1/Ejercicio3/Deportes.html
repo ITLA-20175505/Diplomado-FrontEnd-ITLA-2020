@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<style>
+    body {
+        background: #e1e8ed;
+    }
+    /* Principio Menu Bar */
+    
+    .menuBar {
+        width: 100%;
+        margin: 0;
+        padding: 10px 0 0 0;
+        list-style: none;
+        background: #1da1f2;
+        border-radius: 50px;
+    }
+    
+    .menuBar ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+        position: absolute;
+        top: 35px;
+        left: 0;
+        background: #222;
+    }
+    
+    .menuBar li {
+        float: left;
+        padding: 0 0 10px 0;
+        margin-left: 7.5%;
+        position: relative;
+    }
+    
+    .menuBar a {
+        float: left;
+        height: 25px;
+        padding: 0 25px;
+        color: #f5f8fa;
+        font: bold 24px/25px Arial, Helvetica;
+        text-decoration: none;
+        text-shadow: 0 1px 0 #000;
+    }
+    
+    .menuBar li:hover>a {
+        color: #14171A;
+    }
+    
+    .menuBar::after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: "";
+        clear: both;
+        height: 0;
+    }
+    
+    .header {
+        margin-top: 25px;
+        padding: 60px;
+        text-align: center;
+        background: #657786;
+        color: white;
+        font-size: 30px;
+    }
+    
+    .menuBar li .active {
+        color: black;
+    }
+    /* Fin Menu Bar */
+    /* Inicio Titulo Central */
+    
+    .titulo {
+        margin: 0 0 0 15em;
+    }
+    /* Fin Titulo Central */
+    /* Inicio Galeria de Fotos Tipo Cards */
+    
+    .galeria {
+        background: #AAB8C2;
+        margin: 0 0 0 25px;
+        height: 31em;
+        width: 22em;
+        border-radius: 50px;
+    }
+    
+    .galeria .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+    /*     
+    .galeria:hover {
+        background: #AAB8C2;
+        padding: 0 18em 0 0;
+    } */
+    
+    .galeria h1 {
+        text-align: center;
+    }
+    
+    .galeria .imagen {
+        float: left;
+        width: 10%;
+    }
+    
+    .galeria .imagen img {
+        margin: 0 0 0 3em;
+        height: 200px;
+        width: 250px;
+        border-radius: 20px;
+        border-color: black;
+        border-style: solid;
+    }
+    
+    .galeria .texto {
+        /* float: left; */
+        /* width: 100%; */
+        position: relative;
+        right: 15px;
+        top: 13em;
+        color: #14171A;
+        /* display: none; */
+    }
+    
+    .galeria .texto p {
+        /* float: left; */
+        /* width: 100%; */
+        text-align: center;
+        /* display: none; */
+    }
+    /* .galeria:hover .texto {
+        display: block;
+    }
+     */
+    
+    .galeria p {
+        margin: 0 0 25px 15px;
+    }
+    /* .galeria #less {
+        display: none;
+    }
+    
+    .galeria:hover>#less {
+        display: block;
+    }
+    
+    .galeria:hover>#more {
+        display: none;
+    }
+     */
+    
+    .column {
+        float: left;
+        width: 33.2%;
+    }
+    /* FIn Galeria de Fotos Tipo Cards */
+</style>
+
+<body>
+    <ul class="menuBar">
+        <li><a href="Index.html">Home</a></li>
+        <li><a href="Cultura.html">Cultura</a></li>
+        <li><a class="active" href="Deportes.html">Deportes</a></li>
+        <li><a href="https://eldia.com.do/" target="_blank">Periodico El Día</a></li>
+        <li><a href="mailto: freddy.sotof19@gmail.com">Sugerencias</a></li>
+    </ul>
+    <h1 class="titulo"> Hall of Fame Dominicano</h1>
+    <div class="row">
+        <div class="column">
+            <div class="galeria">
+                <h1>Juan Marichal </h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/juanmarichal.jpg" />
+                    </div>
+                    <div class="texto">
+                        <p>En julio de 1983 el lanzador dominicano Juan Marichal se convertía en el primer dominicano en ingresar al Salón de la Fama de Cooperstown. </p>
+                        <p>Es recordado por su alta patada, ganó 243 juegos y 142 en 16 temporadas en las Grandes Ligas.</p>
+                        <p>Mostró un dominio absoluto por casi dos décadas con los Leones del Escogido en la pelota invernal con 1.87 de efectividad estableciendo una marca.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="galeria">
+                <h1>Pedro Martínez</h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/pedromartinez.jpg" />
+                    </div>
+                    <div class="texto">
+                        <p>República Dominicana, logró meter un segundo representante al Salón de la Fama de Cooperstown, el mayor reconocimiento que puede recibir un pelotero en el béisbol profesional.
+                        </p>
+                        <p> El lanzador Pedro Martinez se unió a su colega Juan Marichal, electo en 1983, como los únicos quisqueyanos en Cooperstown, tras recibir el voto favorable de la Asociación de Escritores de Béisbol de América.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="galeria">
+                <h1>Vladimir Guerrero</h1>
+                <div class="row">
+                    <div class="imagen">
+                        <img src="./Assets/img/vladimirguerrero.png" />
+                    </div>
+                    <div class="texto">
+                        <p>Vladimir Guerrero no solamente es el tercer dominicano, y el primer bateador de la isla caribeña, que alcanza el Salón del Béisbol.</p>
+                        <p> Guerrero, un jardinero que jugó por 16 temporadas, fue electo por la BBWAA, en la promoción del 2018 del Salón de la Fama. </p>
+                        <p>Vladimir, de 43 años, es uno de los nueve miembros de la familia Guerrero que han firmado contratos con la pelota profesional.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
