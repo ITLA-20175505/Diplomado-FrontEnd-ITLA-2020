@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <form action="mailto:freddy.sotof19@gmail.com" method="POST" enctype="text/plain">
+        <label>Enviar a: &nbsp;&nbsp;&nbsp;</label>
+        <input type="text" value="fsoto@arsmetasalud.com" readonly/>
+        <p>
+            <label>Nombre;  &nbsp;&nbsp;&nbsp;</label>
+            <input name="Nombre" type="text" placeholder="Nombre" />
+
+        </p>
+        <p>
+            <label>Apellido:  &nbsp;&nbsp;&nbsp;</label>
+            <input name="Apellido" type="text" placeholder="Apellido" />
+        </p>
+        <p> <label>Asunto:  &nbsp;&nbsp;&nbsp;</label>
+            <select name="Asunto">
+                <option value="">Seleccione</option>
+                <option value="CONSULTA"> Consulta</option>
+                <option value="SUGERENCIA">Sugerencia</option>
+                <option value="DUDA">Duda</option>
+            </select>
+        </p>
+        <label>Mensaje:  &nbsp;&nbsp;&nbsp;</label>
+        <p>
+
+            <textarea name="Mensaje"></textarea>
+        </p>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="submit" value="Enviar Correo" />
+    </form>
+</body>
+
+</html>
