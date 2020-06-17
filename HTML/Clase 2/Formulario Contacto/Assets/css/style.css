@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Suez+One&display=swap" rel="stylesheet"');
+@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap');
 @import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 * {
     box-sizing: border-box;
@@ -9,11 +9,11 @@
 
 body {
     margin: 0px;
-    font-family: Suez One;
+    font-family: 'Amiri', serif;
 }
 
 main {
-    background-image: url("../img/bg-principal.jpg");
+    background-image: url("../img/freddyeselmejor.jpg");
     /* filter: grayscale(100%); */
     background-position: 50% 50%;
     height: 100vh;
@@ -29,24 +29,27 @@ main {
 }
 
 .title {
-    color: white;
+    color: black;
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 20px;
+    font-size: 40px;
 }
 
 .form-container {
     position: relative;
-    width: 80%;
+    width: 60%;
     height: auto;
-    left: 10%;
-    background: #3b5998;
+    left: 20%;
+    background: #f5f8fa;
     padding: 10px !important;
     top: 10%;
+    border-radius: 25px;
 }
 
 .container {
     width: 100%;
+    padding: 0 0 5em;
 }
 
 .container>article {
@@ -54,16 +57,51 @@ main {
 }
 
 .info {
-    width: 34%;
-    padding: 10px;
+    padding: 10px
+}
+
+.info>* {
+    display: block;
+    font-size: 20px;
+}
+
+.info ul>li {
+    margin-bottom: 10px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:after {
+    content: '';
+    width: 0px;
+    height: 3px;
+    display: block;
+    background: orange;
+    transition: 300ms;
+}
+
+a:hover:after {
+    width: 100%;
 }
 
 .form {
-    width: 65%;
+    width: 60%;
+    float: right;
 }
 
 form>* {
     display: block;
+}
+
+input::placeholder {
+    color: black;
+}
+
+textarea::placeholder {
+    color: black;
 }
 
 input,
@@ -73,8 +111,40 @@ textarea {
     line-height: 1.3;
     margin-bottom: 10px;
     border: 1px solid #ced4da;
+    border-radius: 5px;
+    transition: border-width 0.2s linear;
+    resize: none;
+}
+
+input:hover,
+textarea:hover {
+    border-right: 5px solid orange;
+}
+
+.btnSubmit {
+    position: relative;
+    box-shadow: inset 0px 1px 0px 0px #caefab;
+    background: linear-gradient(to bottom, #77d42a 5%, #5cb811 100%);
+    background-color: #77d42a;
+    border-radius: 6px;
+    border: 1px solid #268a16;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    font-family: Arial;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 1em 5em;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #aade7c;
+    left: 30%;
+}
+
+.btnSubmit:hover {
+    background: linear-gradient(to bottom, #5cb811 5%, #77d42a 100%);
+    background-color: #5cb811;
 }
 
 .font-color {
-    color: #f7f7f7;
+    color: black;
 }
