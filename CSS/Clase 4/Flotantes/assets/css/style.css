@@ -7,7 +7,7 @@
 
 body {
     background-color: #DCE0E5;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Verdana;
 }
 
 h2 {
@@ -17,82 +17,73 @@ h2 {
     color: #222222;
 }
 
-.container {
+.contenedor {
     width: 100%;
     height: 100vh;
     padding: 0 15px;
 }
 
-.container>* {
-    background-color: #007991;
+.contenedor > * {
+    background-color: #6E9CC4;
     border-radius: 5px;
     margin: 5px;
     padding: 10px;
 }
 
-.header {
-    background-color: #439A86;
-    columns: #222222;
+.cabecera {
+    background-color: #FFBA08;
+    color: #222222;
     min-height: 60px;
     float: left;
 }
 
-.header,
-.footer {
+.cabecera, .pie-pagina {
     width: inherit;
 }
 
-.section,
-.taskbar {
+.seccion, .barra-tarea {
     width: 32%;
     min-height: 400px;
     float: left;
 }
 
-.taskbar {
+.barra-tarea {
     float: right;
 }
 
-.footer {
+.pie-pagina {
     min-height: 60px;
     float: left;
 }
 
-
 /* Extra small devices (phones, 600px and down) */
-
 @media only screen and (max-width: 600px) {
-    .section,
-    .taskbar {
+    .seccion, .barra-tarea {
         width: 100%;
         min-height: 200px;
         float: left;
     }
-    .taskbar {
+
+    .barra-tarea {
         float: left;
         min-height: 100px;
     }
-    .footer {
+
+    .pie-pagina {
         display: none;
     }
 }
 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-
-@media only screen and (min-width: 600px) {}
-
+@media only screen and (min-width: 600px) { }
 
 /* Medium devices (landscape tablets, 768px and up) */
-
-@media only screen and (min-width: 768px) {}
-
+@media only screen and (min-width: 768px) { }
 
 /* Large devices (laptops/desktops, 992px and up) */
-
-@media only screen and (min-width: 992px) {}
-
+@media only screen and (min-width: 992px) { }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) { }
 
-@media only screen and (min-width: 1200px) {}
