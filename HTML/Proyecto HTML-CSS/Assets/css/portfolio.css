@@ -1,0 +1,114 @@
+/* BEGIN CONTENT */
+
+.content {
+    margin: 4em auto;
+    width: 60%;
+    height: 21em;
+    background-color: #0b7a75;
+    border-radius: 5px;
+    display: grid;
+    grid-template-columns: 1fr .5vw 1fr;
+    grid-template-rows: 23.5em;
+    grid-template-areas: "link line info";
+    grid-gap: 40px 5px;
+}
+
+.content .vDraw:nth-child(1):after {
+    top: 7.7em;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 17px solid #0E151B;
+}
+
+.content .vDraw:nth-child(2):after {
+    top: 70.7vh;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 17px solid #0E151B;
+}
+
+.content .vDraw:nth-child(3):after {
+    top: 50vh;
+    left: 20.2%;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 17px solid #0E151B;
+    transform: translateX(-20.2%);
+}
+
+.content .vDraw:nth-child(4):after {
+    top: 50vh;
+    right: -10%;
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 17px solid #0E151B;
+    /* transform: translateX(10%); */
+}
+
+
+/* END CONTENT */
+
+.link {
+    /* background-color: lawngreen; */
+    grid-area: link;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.link>img {
+    margin: 10px auto;
+    width: 10em;
+    height: 10em;
+    border-radius: 20px;
+}
+
+.link>ul {
+    list-style: none;
+    align-self: flex-start;
+}
+
+.link a {
+    /* background-color: brown; */
+    text-decoration: none;
+    margin: 0 5.5em;
+    display: flex;
+    align-items: center;
+}
+
+.icon-link {
+    color: #0E151B;
+    margin: 0 .3em;
+}
+
+.vertical-line {
+    grid-area: line;
+    border-left: 5px solid #0E151B;
+    margin: 2.4em auto;
+    height: 70%;
+}
+
+.info {
+    /* background-color: rebeccapurple; */
+    grid-area: info;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.data {
+    width: 100%;
+    display: flex;
+    margin: 0 2.1em;
+}
+
+.data-title {
+    font-weight: bold;
+    flex: 0 1 35%;
+}
+
+.data-value {
+    flex: 0 1 80%;
+    text-align: justify;
+}

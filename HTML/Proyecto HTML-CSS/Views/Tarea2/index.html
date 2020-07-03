@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../../Assets/css/style.css" rel="stylesheet">
+    <link href="../../Assets/css/pizzeria.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="vDraw"></div>
+        <div class="logo">
+            Freddy Soto Fermin
+        </div>
+        <nav role="navigation" class="navMenu">
+            <ul class="menu-list">
+                <li class="menu-item"><a href="../../index.html"><i class=""></i> Inicio</a></li>
+                <li class="menu-item dropdown " aria-haspopup="true"><a href=""> Tarea 1 &nbsp;&nbsp;<i class="fas fa-caret-down"></i><i class="fas fa-caret-up"></i></a>
+
+                    <ul class="submenu-list " aria-label="submenu">
+                        <li class="submenu-item "><a href="../Tarea1/Ejercicio1/HTML Basico.html"><i class=""></i> Ejercicio 1</a></li>
+                        <li class="submenu-item"><a href="../Tarea1/Ejercicio2/HTML con Textos Formateados.html"><i class=""></i> Ejercicio 2</a></li>
+                    </ul>
+
+                </li>
+                <li class="menu-item dropdown " aria-haspopup="true"><a href=""> Tarea 2 &nbsp;&nbsp;<i class="fas fa-caret-down"></i><i class="fas fa-caret-up"></i></a>
+
+                    <ul class="submenu-list " aria-label="submenu">
+                        <li class="submenu-item"><a href="../Tarea1/Ejercicio3/Index.html"><i class=""></i> Inicio</a></li>
+                        <li class="submenu-item "><a href="../Tarea1/Ejercicio3/Cultura.html"><i class=""></i> Cultura</a></li>
+                        <li class="submenu-item"><a href="../Tarea1/Ejercicio3/Deportes.html"><i class=""></i> Deporte</a></li>
+                    </ul>
+
+                </li>
+                <li class="menu-item"><a href="../Tarea2/index.html"><i class=""></i> Tarea 3</a></li>
+            </ul>
+        </nav>
+        <div class="vDraw"></div>
+    </header>
+    <main class="container">
+        <section class="content">
+            <h1 class="titulo">OFERTAS DEL MES DE JUNIO</h1>
+            <article class="galeria">
+                <h1><i>¡La Personal!</i></h1>
+                <div class="imagen">
+                    <img src="../../Assets/img/Pizzeria/mozarella1.png" />
+                    <div class="precio">&euro; 5.00</div>
+                </div>
+                <button class="infobutton" onclick="OpenModal('modalPersonal')" type="button">Ver más acerca de esta oferta</button>
+            </article>
+            <article class="galeria">
+                <h1><i>¡La favorita de Cupido!</i></h1>
+                <div class="imagen">
+                    <img src="../../Assets/img/Pizzeria/2mozarella.jpg" />
+                    <div class="precio">&euro; 6.00</div>
+                </div>
+                <button class="infobutton" onclick="OpenModal('modalCupido')" type="button">Ver más acerca de esta oferta</button>
+            </article>
+            <article class="galeria">
+                <h1><i>¡Para todos!</i></h1>
+                <div class="imagen">
+                    <img src="../../Assets/img/Pizzeria/4pizza.jpg" />
+                    <div class="precio">&euro; 10.00</div>
+                </div>
+                <button class="infobutton" onclick="OpenModal('modalTodos')" type="button">Ver más acerca de esta oferta</button>
+            </article>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="vDraw"></div>
+            <div class="footerBar">
+                &copy;
+                <article class="vDraw"></article>
+            </div>
+        </footer>
+    </main>
+
+    <!-- Modal Pizza Personal -->
+    <div id="modalPersonal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Oferta Pizza &nbsp;
+                    <cite>La Personal</cite>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p>Llévate 1 Pizza Mozarella de 1 ingrediente & una Cola 16 oz por <b>&euro; 5.00</b> imp. incl., disponible para Carry Out.</p>
+                <p>Esta oferta aplica para delivery</p>
+                <p>Ingredientes: Combinación de quesos: mozzarella, provolone, parmesano, romano, asiago y fontina. </p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Pizza Cupido -->
+    <div id="modalCupido" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Oferta Pizza &nbsp;
+                    <cite>La Favorita de Cupido</cite>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p><b>Por que peliar por el ingrediente de la pizza, si ambos pueden pedir una de su ingrediente favorita?</b></p>
+                <p>Llévate 2 Pizza Mozarella de 1 ingrediente cada una por <b>&euro; 6.00</b> imp. incl., disponible para Carry Out.</p>
+                <p>Esta oferta aplica para delivery</p>
+                <p>Ingredientes: Combinación de quesos: mozzarella, provolone, parmesano, romano, asiago y fontina. </p>
+            </div>
+        </div>
+    </div>
+    <!-- Modal Pizza para Todos -->
+    <div id="modalTodos" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>Oferta Pizza &nbsp;
+                    <cite>Para Todos</cite>
+                </h2>
+            </div>
+            <div class="modal-body">
+                <p><b>Esta oferta es perfecta para reuniones entre amigos y familiares.</b></p>
+                <p><b>Ahorra tiempo y energia solicitando que te enviemos esta pizza!</b></p>
+                <p>Llévate 4 Pizza Mozarella de 1 ingrediente cada una por tan solo <b>&euro; 10.00</b> imp. incl., disponible para Carry Out.</p>
+                <p>Esta oferta aplica para delivery</p>
+                <p>Ingredientes: Combinación de quesos: mozzarella, provolone, parmesano, romano, asiago y fontina. </p>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function OpenModal(selector) {
+        var modal = document.getElementById(selector);
+        var span = document.getElementById(selector).getElementsByClassName("close")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</html>
