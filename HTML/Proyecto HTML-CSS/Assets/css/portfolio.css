@@ -1,56 +1,52 @@
 /* BEGIN CONTENT */
 
 .content {
-    margin: 4em auto;
+    margin: 4em 15em;
     width: 60%;
     height: 21em;
     background-color: #0b7a75;
     border-radius: 5px;
     display: grid;
-    grid-template-columns: 1fr .5vw 1fr;
-    grid-template-rows: 23.5em;
-    grid-template-areas: "link line info";
+    grid-template-columns: 17px 1fr .5vw 1fr 17px;
+    grid-template-rows: 100%;
+    grid-template-areas: "leftvDraw link line info rightvDraw";
     grid-gap: 40px 5px;
-}
-
-.content .vDraw:nth-child(1):after {
-    top: 7.7em;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-top: 17px solid #0E151B;
-}
-
-.content .vDraw:nth-child(2):after {
-    top: 70.7vh;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-bottom: 17px solid #0E151B;
-}
-
-.content .vDraw:nth-child(3):after {
-    top: 50vh;
-    left: 20.2%;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-left: 17px solid #0E151B;
-    transform: translateX(-20.2%);
-}
-
-.content .vDraw:nth-child(4):after {
-    top: 50vh;
-    right: -10%;
-    border-top: 25px solid transparent;
-    border-bottom: 25px solid transparent;
-    border-right: 17px solid #0E151B;
-    /* transform: translateX(10%); */
 }
 
 
 /* END CONTENT */
 
+.content>.vDraw:nth-child(1) {
+    grid-area: leftvDraw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content>.vDraw:nth-child(5) {
+    grid-area: rightvDraw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content>.vDraw:nth-child(1):after {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-left: 17px solid #0E151B;
+}
+
+.content>.vDraw:nth-child(5):after {
+    border-top: 25px solid transparent;
+    border-bottom: 25px solid transparent;
+    border-right: 17px solid #0E151B;
+}
+
 .link {
     /* background-color: lawngreen; */
     grid-area: link;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -62,17 +58,19 @@
     width: 10em;
     height: 10em;
     border-radius: 20px;
+    flex-shrink: 2;
 }
 
 .link>ul {
     list-style: none;
     align-self: flex-start;
+    flex-shrink: 1;
 }
 
 .link a {
     /* background-color: brown; */
     text-decoration: none;
-    margin: 0 5.5em;
+    margin: 0 4em;
     display: flex;
     align-items: center;
 }
@@ -84,9 +82,39 @@
 
 .vertical-line {
     grid-area: line;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.vertical-line>.vDraw:nth-child(1) {
+    padding-right: 50px;
+}
+
+.vertical-line>.vDraw:nth-child(1):after {
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 17px solid #0E151B;
+}
+
+.line {
     border-left: 5px solid #0E151B;
     margin: 2.4em auto;
-    height: 70%;
+    height: 72%;
+}
+
+.vertical-line>.vDraw:nth-child(3) {
+    padding-right: 50px;
+}
+
+.vertical-line>.vDraw:nth-child(3):after {
+    align-self: flex-end;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-bottom: 17px solid #0E151B;
 }
 
 .info {
@@ -112,3 +140,77 @@
     flex: 0 1 80%;
     text-align: justify;
 }
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 600px) {
+    .content {
+        height: 75%;
+        margin: 4em auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr .1fr 1fr;
+        grid-template-areas: "link" "line" "info ";
+        /* gap: 2em; */
+    }
+    .content .vDraw:after,
+    .content>.vDraw:after {
+        display: none;
+    }
+    .content .vDraw,
+    .content>.vDraw {
+        display: none;
+    }
+    .line {
+        border-left: 0;
+        border-bottom: 5px solid #0E151B;
+        /* margin: 0 1em; */
+        height: 0;
+        width: 80%;
+    }
+    .link {
+        height: auto;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (max-width: 768px) {
+    .content {
+        height: 75%;
+        margin: 4em auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr .1fr 1fr;
+        grid-template-areas: "link" "line" "info ";
+        /* gap: 2em; */
+    }
+    .content .vDraw:after,
+    .content>.vDraw:after {
+        display: none;
+    }
+    .content .vDraw,
+    .content>.vDraw {
+        display: none;
+    }
+    .line {
+        border-left: 0;
+        border-bottom: 5px solid #0E151B;
+        /* margin: 0 1em; */
+        height: 0;
+        width: 80%;
+    }
+    .link {
+        height: auto;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {}

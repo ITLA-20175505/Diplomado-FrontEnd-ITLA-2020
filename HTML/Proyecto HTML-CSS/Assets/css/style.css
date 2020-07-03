@@ -15,9 +15,8 @@ body {
     content: "";
     display: block;
     position: absolute;
-    left: 50%;
-    /*Como calcular la posicion del elemento para centrarlo*/
-    transform: translateX(-50%);
+    /* left: 50%;
+    transform: translateX(-50%); */
 }
 
 
@@ -29,23 +28,31 @@ body {
     width: 100%;
     height: 60px;
     display: grid;
-    grid-template-areas: "logo logo menu menu";
-    grid-template-columns: repeat(2, 2fr) repeat(2, 1.5fr);
-    grid-template-rows: 100%
+    grid-template-areas: "logo logo headerTopvDraw  menu menu" "headerCentervDraw headerCentervDraw headerCentervDraw headerCentervDraw headerCentervDraw";
+    grid-template-columns: repeat(2, 2fr) .8fr repeat(2, 2fr);
+    grid-template-rows: 100% auto
+}
+
+.header>.vDraw:nth-child(1) {
+    grid-area: headerTopvDraw;
+    /* background-color: black; */
 }
 
 .header>.vDraw:nth-child(1):after {
-    top: 3.7em;
+    border-left: 25px solid transparent;
+    border-right: 25px solid transparent;
+    border-top: 17px solid #030e07;
+}
+
+.header>.vDraw:nth-child(4) {
+    grid-area: headerCentervDraw;
+    margin: 0 44%;
+}
+
+.header>.vDraw:nth-child(4):after {
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-top: 39px solid #49E981;
-}
-
-.header>.vDraw:nth-child(2):after {
-    top: 0;
-    border-left: 25px solid transparent;
-    border-right: 25px solid transparent;
-    border-top: 17px solid #0E151B;
 }
 
 .logo {
@@ -206,31 +213,37 @@ body {
 
 .footer {
     grid-area: footer;
+    height: 100%;
     width: 100%;
-    /* height: 100%; */
-    /* display: grid;
-    grid-template-areas: "uppertriangle" "footerBar"; */
-    display: flex;
-    flex-direction: column;
-    /* background-color: #49E981; */
+    display: grid;
+    grid-template-areas: "footerTopvDraw" "footerBar" "footerBottomvDraw";
+    grid-template-columns: 1fr;
+    grid-template-rows: 2.4em 1fr auto
+    /* align-content: center; */
+}
+
+.footer>.vDraw:nth-child(1) {
+    grid-area: footerTopvDraw;
+    margin: 0 44%;
 }
 
 .footer>.vDraw:nth-child(1):after {
-    grid-area: uppertriangle;
     border-left: 50px solid transparent;
     border-right: 50px solid transparent;
     border-bottom: 39px solid #49E981;
 }
 
 .footerBar {
-    grid-area: footerBar;
-    margin: 2.45em 0;
-    padding-bottom: 1.36em;
+    width: 100%;
     background-color: #49E981;
 }
 
+.footerBar>.vDraw {
+    padding-top: 5px;
+    margin: 0 45.6%
+}
+
 .footerBar>.vDraw::after {
-    margin: .3em 0;
     border-left: 25px solid transparent;
     border-right: 25px solid transparent;
     border-bottom: 17px solid #0E151B;
@@ -241,3 +254,56 @@ body {
 
 
 /* END CONTAINER */
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 600px) {
+    .header {
+        grid-template-areas: "logo    menu" "  headerCentervDraw headerCentervDraw";
+        grid-template-columns: .9fr 1fr;
+        grid-template-rows: 100% auto
+    }
+    .header>.vDraw:nth-child(4) {
+        margin: 0 40%;
+    }
+    .logo {
+        font-size: 20px;
+        justify-content: flex-start;
+        margin: 0 1em;
+    }
+    .footer {
+        display: none;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (max-width: 768px) {
+    .header {
+        grid-template-areas: "logo    menu" "  headerCentervDraw headerCentervDraw";
+        grid-template-columns: .9fr 1fr;
+        grid-template-rows: 100% auto
+    }
+    .header>.vDraw:nth-child(4) {
+        margin: 0 40%;
+    }
+    .logo {
+        font-size: 20px;
+        justify-content: flex-start;
+        margin: 0 1em;
+    }
+    .footer {
+        display: none;
+    }
+}
+
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {}
