@@ -7,10 +7,10 @@
     margin: 0;
     height: 17.5em;
     width: 25%;
-    background: linear-gradient(-120deg, #F7F5F3, #394053);
+    /* background: linear-gradient(-120deg, #F7F5F3, #394053); */
     transition-duration: 1s;
     border-radius: 7px;
-    border: solid .2em lawngreen;
+    border: .1em solid #49E981;
     display: flex;
     flex-flow: column wrap;
     align-items: center;
@@ -42,6 +42,7 @@
     margin: 0 0 0 15px;
     height: 150px;
     width: 300px;
+    border: 3px solid #49E981;
 }
 
 .galeria #less {
@@ -69,7 +70,44 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
+    .imagen {
+        align-self: center;
+    }
+    .imagen>img {
+        height: 150px;
+        width: 300px;
+        margin: 0 auto;
+    }
+    .galeria {
+        flex-basis: 95%;
+        height: 30em;
+        flex-flow: column nowrap;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+    }
+    .texto {
+        display: flex;
+        width: 100%;
+        text-align: justify;
+    }
+    .galeria #more,
+    .galeria #less {
+        display: none;
+    }
+    .galeria:hover>#less {
+        display: none;
+    }
+    .galeria:hover>#more {
+        display: none;
+    }
+    .galeria>h1 {
+        margin: 1em auto;
+    }
+}
+
+@media only screen and (min-width: 600px) {
     .galeria {
         flex-basis: 75%;
         height: auto;
@@ -92,34 +130,6 @@
     }
     .galeria:hover>#more {
         display: none;
-    }
-}
-
-@media only screen and (max-width: 480px) {
-    .galeria {
-        flex-basis: 50%;
-        flex-flow: column nowrap;
-        align-items: center;
-        align-content: center;
-        justify-content: center;
-    }
-    .texto {
-        display: flex;
-        width: 100%;
-        text-align: justify;
-    }
-    .galeria #more,
-    .galeria #less {
-        display: none;
-    }
-    .galeria:hover>#less {
-        display: none;
-    }
-    .galeria:hover>#more {
-        display: none;
-    }
-    .galeria>h1 {
-        margin: 2em auto;
     }
 }
 

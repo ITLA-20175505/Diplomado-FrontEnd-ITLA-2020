@@ -2,7 +2,8 @@
     width: 50%;
     /* margin-top: 25px; */
     text-align: center;
-    background: #F18F01;
+    /* background: linear-gradient(-120deg, #F7F5F3, #394053); */
+    border: .1em solid #49E981;
     font-size: 26px;
     /* margin: 10em auto; */
     /* height: 100%; */
@@ -21,13 +22,15 @@
 }
 
 .content * {
-    color: #0E151B;
+    /* color: #0E151B; */
 }
 
 @media only screen and (max-width: 480px) {
     .headcrumb {
-        width: 80%;
+        margin: 4em auto;
+        width: 90%;
         font-size: 14px;
+        height: 20em;
     }
 }
 

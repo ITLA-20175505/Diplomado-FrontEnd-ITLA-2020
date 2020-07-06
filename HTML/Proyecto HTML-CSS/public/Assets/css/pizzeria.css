@@ -22,7 +22,8 @@
 
 .galeria {
     /* background: #F18F01; */
-    background: linear-gradient(-120deg, #F7F5F3, #394053);
+    /* background: linear-gradient(-120deg, #F7F5F3, #394053); */
+    border: .1em solid #49E981;
     height: 18.5em;
     width: 24em;
     border-radius: 50px;
@@ -43,6 +44,7 @@
     border-radius: 20px;
     border-color: black;
     border-style: solid;
+    border: 3px solid #49E981;
 }
 
 .galeria .imagen>.precio {
@@ -189,11 +191,12 @@
 @media only screen and (max-width: 480px) {
     .titulo {
         font-size: 28px;
+        margin: 2em auto;
     }
     .galeria {
         margin: 1em auto;
         width: 90%;
-        height: 30em;
+        height: 32em;
     }
     .infobutton {
         display: none

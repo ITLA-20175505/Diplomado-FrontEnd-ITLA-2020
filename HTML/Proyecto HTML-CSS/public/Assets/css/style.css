@@ -260,12 +260,22 @@ body {
 
 @media only screen and (max-width: 480px) {
     .header {
-        grid-template-areas: " menu";
+        grid-template-areas: " menu" "headerCentervDraw";
         grid-template-columns: 1fr;
-        grid-template-rows: 100%
+        grid-template-rows: 100% auto;
+    }
+    .navMenu * {
+        font-size: 12px;
+    }
+    .dropdown i {
+        font-size: 10px;
+    }
+    .header>.vDraw:nth-child(1) {
+        display: none;
     }
     .header>.vDraw:nth-child(4) {
         margin: 0 40%;
+        z-index: -1;
     }
     .logo {
         display: none;
@@ -273,15 +283,29 @@ body {
     .footer {
         display: none;
     }
+    .dropdown:hover,
+    .dropdown:focus-within {
+        padding-bottom: 10em;
+        margin-top: 10em;
+    }
+    .submenu-item {
+        margin: auto 0;
+    }
 }
 
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
 @media only screen and (min-width: 600px) {
+    .navMenu * {
+        font-size: 12px;
+    }
+    .dropdown i {
+        font-size: 8px;
+    }
     .header {
-        grid-template-areas: "logo    menu" "  headerCentervDraw headerCentervDraw";
-        grid-template-columns: .9fr 1fr;
+        grid-template-areas: "logo menu" "  headerCentervDraw headerCentervDraw";
+        grid-template-columns: .7fr 1fr;
         grid-template-rows: 100% auto
     }
     .header>.vDraw:nth-child(4) {
@@ -294,6 +318,11 @@ body {
     }
     .footer {
         display: none;
+    }
+    .dropdown:hover,
+    .dropdown:focus-within {
+        padding-bottom: 10em;
+        margin-top: 10em;
     }
 }
 
@@ -316,6 +345,17 @@ body {
     }
     .footer {
         display: none;
+    }
+    .navMenu * {
+        font-size: 13px;
+    }
+    .dropdown i {
+        font-size: 12px;
+    }
+    .dropdown:hover,
+    .dropdown:focus-within {
+        padding-bottom: 8em;
+        margin-top: 8em;
     }
 }
 
@@ -365,6 +405,17 @@ body {
         border-right: 50px solid transparent;
         border-top: 39px solid #49E981;
     }
+    .navMenu * {
+        font-size: 15px;
+    }
+    .dropdown i {
+        font-size: 13px;
+    }
+    .dropdown:hover,
+    .dropdown:focus-within {
+        padding-bottom: 6em;
+        margin-top: 6em;
+    }
 }
 
 
@@ -386,5 +437,11 @@ body {
     .header>.vDraw:nth-child(4) {
         grid-area: headerCentervDraw;
         margin: 0 43.5%;
+    }
+    .navMenu * {
+        font-size: 16px;
+    }
+    .dropdown i {
+        font-size: 16px;
     }
 }
