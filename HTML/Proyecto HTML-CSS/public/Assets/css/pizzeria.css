@@ -1,8 +1,5 @@
-.container {
-    /* background-image: url('../img/Pizzeria/wallpaper.jpg'); */
-}
-
 .content {
+    grid-area: content;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -75,12 +72,8 @@
     transition-duration: 300ms;
 }
 
-.infobutton:hover {
-    border: none;
-    background: #1BDA5E;
-    color: black;
-    box-shadow: 0px 0px 1px #777;
-    border-radius: 15px;
+.item-info {
+    display: none;
 }
 
 
@@ -133,6 +126,26 @@
 }
 
 
+/* The Close Button */
+
+.close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modal-header {
+    padding: 2px 16px;
+    background-color: #0E151B;
+    color: #49E981;
+}
+
+.modal-body {
+    padding: 2px 16px;
+}
+
+
 /* Add Animation */
 
 @-webkit-keyframes animatetop {
@@ -157,29 +170,127 @@
     }
 }
 
-
-/* The Close Button */
-
-.close {
-    color: white;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
+@media (hover: hover) {
+    .infobutton:hover {
+        border: none;
+        background: #1BDA5E;
+        color: black;
+        box-shadow: 0px 0px 1px #777;
+        border-radius: 15px;
+    }
+    .close:hover,
+    .close:focus {
+        color: #49E981;
+        text-decoration: none;
+        cursor: pointer;
+    }
 }
 
-.close:hover,
-.close:focus {
-    color: #49E981;
-    text-decoration: none;
-    cursor: pointer;
+@media only screen and (max-width: 480px) {
+    .titulo {
+        font-size: 28px;
+    }
+    .galeria {
+        margin: 1em auto;
+        width: 90%;
+        height: 30em;
+    }
+    .infobutton {
+        display: none
+    }
+    .item-info {
+        display: block;
+        text-align: center;
+    }
 }
 
-.modal-header {
-    padding: 2px 16px;
-    background-color: #0E151B;
-    color: #49E981;
+@media only screen and (min-width: 600px) {
+    .titulo {
+        margin: 1em auto;
+        margin-bottom: 0;
+    }
+    .content {
+        height: 100%;
+        width: 100%;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between;
+    }
+    .galeria {
+        height: 30em;
+        width: 32em;
+        margin: 1em auto;
+    }
+    .infobutton {
+        display: none
+    }
+    .item-info {
+        display: block;
+        text-align: center;
+    }
+    .imagen img {
+        height: 10em;
+        width: 20em;
+    }
 }
 
-.modal-body {
-    padding: 2px 16px;
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    .content {
+        height: 100%;
+        width: 100%;
+    }
+    .galeria {
+        flex-basis: 80%;
+        height: 30em;
+        margin: 2em auto
+    }
+    .imagen img {
+        height: 10em;
+        width: 20em;
+    }
+    .infobutton {
+        display: none
+    }
+    .item-info {
+        display: block;
+        text-align: center;
+    }
+    .imagen img {
+        height: 10em;
+        width: 20em;
+    }
 }
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .galeria {
+        flex-basis: 45%;
+        height: 20em;
+        margin: 2em auto
+    }
+    .imagen img {
+        height: 10em;
+        width: 20em;
+    }
+    .imagen img {
+        height: 10em;
+        width: 20em;
+    }
+    .infobutton {
+        display: block
+    }
+    .item-info {
+        display: none;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {}

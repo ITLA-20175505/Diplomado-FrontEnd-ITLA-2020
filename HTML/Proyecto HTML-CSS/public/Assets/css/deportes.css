@@ -1,0 +1,146 @@
+.container {
+    grid-template-rows: auto 1fr 5em;
+    grid-template-areas: "titulo titulo titulo" "content content content" "footer footer footer";
+}
+
+.content {
+    margin: 0;
+    /* height: 21em; */
+}
+
+.content * {
+    color: #F7F5F3;
+}
+
+.titulo {
+    color: #F7F5F3;
+    grid-area: titulo;
+    margin: 0;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.galeria {
+    height: 26em;
+    width: 24em;
+    border-radius: 50px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    box-sizing: border-box;
+    transition-duration: 500ms;
+    border: .1em solid #49E981;
+}
+
+.galeria>h1 {
+    text-align: center;
+    margin: 0;
+    padding-bottom: 1em;
+}
+
+.imagen img {
+    height: 150px;
+    width: 220px;
+    border-radius: 20px;
+    border: 3px solid #49E981;
+}
+
+.texto {
+    width: 100%;
+    font-size: 12px;
+    text-align: center;
+    flex: 0 1 0;
+    color: #F7F5F3;
+}
+
+@media (hover: hover) {
+    .galeria:hover {
+        box-shadow: 0 0 1em #49E981;
+        transition-duration: 500ms;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .galeria {
+        width: 85%;
+        margin: 1em auto;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .titulo {
+        padding-top: 2em;
+        margin: 0;
+    }
+    .content {
+        flex-flow: column nowrap;
+        margin: 0;
+    }
+    .galeria {
+        margin: 4em auto;
+    }
+    .galeria>h1 {
+        margin: 0;
+        padding-bottom: 0;
+    }
+    .texto {
+        flex-flow: row wrap;
+    }
+}
+
+
+/* Medium devices (landscape tablets, 768px and up) */
+
+@media only screen and (min-width: 768px) {
+    .titulo {
+        padding-top: 2em;
+        margin: 0;
+    }
+    .content {
+        flex-flow: row wrap;
+        margin: 0;
+    }
+    .galeria {
+        width: 21em;
+        margin: 4em auto;
+    }
+    .galeria>h1 {
+        margin: 0;
+        padding-bottom: 0;
+    }
+    .texto {
+        flex-flow: row wrap;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .titulo {
+        padding-top: 2em;
+        margin: 0;
+    }
+    .content {
+        flex-flow: row wrap;
+        margin: 0;
+    }
+    .galeria {
+        width: 21em;
+        margin: 4em auto;
+    }
+    .galeria>h1 {
+        margin: 0;
+        padding-bottom: 0;
+    }
+    .texto {
+        flex-flow: row wrap;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {}
