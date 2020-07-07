@@ -1,9 +1,9 @@
 .content {
-    margin: 4em 0;
+    margin: 2em 0;
 }
 
 .galeria {
-    flex-basis: 33%;
+    flex-basis: 35%;
     margin: 0;
     height: 17.5em;
     width: 25%;
@@ -24,12 +24,12 @@
 
 .galeria>p {
     margin: 0 1em;
-    flex-basis: 20%;
+    flex-basis: 10%;
 }
 
 .texto {
     width: 45%;
-    margin: 3em auto;
+    margin: 3em 2em;
     flex-grow: 1;
     display: none;
 }
@@ -50,24 +50,25 @@
     width: 40%;
 }
 
-@media (hover: hover) {
-    .galeria:hover .texto {
-        transition-duration: 2s;
-        display: flex;
-        align-items: center;
-    }
-    .galeria:hover {
-        background: linear-gradient(120deg, #F7F5F3, #394053);
-        width: 50%;
-        flex-basis: 50%;
-        transition-duration: 1s;
-    }
-    .galeria:hover>#less {
-        display: inline;
-    }
-    .galeria:hover>#more {
-        display: none;
-    }
+.galeria:hover .texto {
+    transition-duration: 2s;
+    display: flex;
+    align-items: center;
+}
+
+.galeria:hover {
+    /* background: linear-gradient(120deg, #F7F5F3, #394053); */
+    width: 50%;
+    flex-basis: 50%;
+    transition-duration: 1s;
+}
+
+.galeria:hover>#less {
+    display: inline;
+}
+
+.galeria:hover>#more {
+    display: none;
 }
 
 @media only screen and (max-width: 480px) {
@@ -90,7 +91,7 @@
     .texto {
         display: flex;
         width: 100%;
-        text-align: justify;
+        text-align: center;
     }
     .galeria #more,
     .galeria #less {
@@ -187,4 +188,41 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+    .content {
+        height: 100%;
+    }
+    .galeria {
+        flex-basis: 35%;
+        margin: 0;
+        height: 17.5em;
+        width: 25%;
+        flex-flow: column wrap;
+    }
+    .galeria:hover {
+        flex-basis: 50%;
+    }
+    .texto {
+        width: 45%;
+        margin: 3em 2em;
+        flex-grow: 1;
+        display: none;
+    }
+    .galeria:hover>#less {
+        display: inline;
+    }
+    .galeria:hover>#more {
+        display: none;
+    }
+    .galeria #more {
+        display: inline;
+    }
+    .galeria>h1 {
+        margin: 0;
+    }
+    .imagen>img {
+        margin: 0 0 0 15px;
+        height: 150px;
+        width: 300px;
+    }
+}

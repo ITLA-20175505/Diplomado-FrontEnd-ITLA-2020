@@ -55,12 +55,12 @@
     color: #F7F5F3;
 }
 
-@media (hover: hover) {
-    .galeria:hover {
-        box-shadow: 0 0 1em #49E981;
-        transition-duration: 500ms;
-    }
+.galeria:hover {
+    box-shadow: 0 0 2em #49E981;
+    transition-duration: 500ms;
 }
+
+@media (hover: hover) {}
 
 @media only screen and (max-width: 480px) {
     .galeria {

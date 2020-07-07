@@ -73,6 +73,7 @@
     margin: 0 4em;
     display: flex;
     align-items: center;
+    font-weight: 500;
 }
 
 .icon-link {
@@ -141,13 +142,10 @@
     text-align: justify;
 }
 
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 480px) {
     .content {
-        height: 75%;
-        width: 100%;
+        height: 80%;
+        width: 90%;
         margin: 4em auto;
         grid-template-columns: 1fr;
         grid-template-rows: 1fr .1fr 1fr;
@@ -171,13 +169,54 @@
     }
     .link {
         height: auto;
+    }
+    .link a {
+        width: 100%;
+        margin: 0 2em;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (min-width: 600px) {
+    .content {
+        height: 75%;
+        width: 80%;
+        margin: 4em auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr .1fr 1fr;
+        grid-template-areas: "link" "line" "info ";
+        /* gap: 2em; */
+    }
+    .content .vDraw:after,
+    .content>.vDraw:after {
+        display: none;
+    }
+    .content .vDraw,
+    .content>.vDraw {
+        display: none;
+    }
+    .line {
+        border-left: 0;
+        border-bottom: 5px solid #0E151B;
+        /* margin: 0 1em; */
+        height: 0;
+        width: 80%;
+    }
+    .link {
+        height: auto;
+    }
+    .link a {
+        width: 100%;
+        margin: 0 6em;
     }
 }
 
 
 /* Medium devices (landscape tablets, 768px and up) */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) {
     .content {
         height: 75%;
         margin: 4em auto;
@@ -203,6 +242,10 @@
     }
     .link {
         height: auto;
+    }
+    .link a {
+        width: 100%;
+        margin: 0 11em;
     }
 }
 
@@ -211,8 +254,50 @@
 
 @media only screen and (min-width: 992px) {
     .content {
-        margin: 8em 5em;
+        margin: 6em 5em;
         width: 80%;
+        height: 21em;
+        grid-template-columns: 17px 1fr .5vw 1fr 17px;
+        grid-template-rows: 100%;
+        grid-template-areas: "leftvDraw link line info rightvDraw";
+        grid-gap: 40px 5px;
+    }
+    .link a {
+        width: 100%;
+        margin: 0 16em;
+    }
+    .line {
+        border: none;
+        border-left: 5px solid #0E151B;
+        margin: 2.4em auto;
+        height: 72%;
+    }
+    .content .vDraw:after,
+    .content>.vDraw:after {
+        display: inline;
+    }
+    .content .vDraw,
+    .content>.vDraw {
+        display: inline;
+    }
+    .link {
+        /* background-color: lawngreen; */
+        grid-area: link;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .link a {
+        /* background-color: brown; */
+        text-decoration: none;
+        margin: 0 4em;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        width: 70%;
     }
 }
 
@@ -221,11 +306,47 @@
 
 @media only screen and (min-width: 1200px) {
     .content {
-        margin: 8em 14.5em;
+        margin: 4em 14.5em;
         width: 60%;
+        height: 21em;
+        background-color: #0b7a75;
+        border-radius: 5px;
+        display: grid;
+        grid-template-columns: 17px 1fr .5vw 1fr 17px;
+        grid-template-rows: 100%;
+        grid-template-areas: "leftvDraw link line info rightvDraw";
+        grid-gap: 40px 5px;
     }
-    .container {
-        grid-template-columns: 1fr 1.5fr 1fr;
-        grid-template-rows: 29.8em 5em;
+    .vertical-line {
+        grid-area: line;
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+    .vertical-line>.vDraw:nth-child(1) {
+        padding-right: 50px;
+    }
+    .vertical-line>.vDraw:nth-child(1):after {
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-top: 17px solid #0E151B;
+    }
+    .line {
+        border: none;
+        border-left: 5px solid #0E151B;
+        margin: 2.4em auto;
+        height: 72%;
+    }
+    .vertical-line>.vDraw:nth-child(3) {
+        padding-right: 55px;
+    }
+    .vertical-line>.vDraw:nth-child(3):after {
+        align-self: flex-end;
+        border-left: 25px solid transparent;
+        border-right: 25px solid transparent;
+        border-bottom: 17px solid #0E151B;
     }
 }

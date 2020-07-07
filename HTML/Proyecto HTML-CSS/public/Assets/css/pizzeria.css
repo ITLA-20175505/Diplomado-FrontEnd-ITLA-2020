@@ -62,7 +62,7 @@
 }
 
 .infobutton {
-    background-color: #0E151B;
+    background-color: #0b7a75;
     padding: .5em;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
@@ -135,6 +135,7 @@
     float: right;
     font-size: 28px;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .modal-header {
@@ -145,6 +146,21 @@
 
 .modal-body {
     padding: 2px 16px;
+}
+
+.infobutton:hover {
+    border: none;
+    background: #0b7a75;
+    color: #0E151B;
+    box-shadow: 0px 0px 1px #777;
+    border-radius: 15px;
+}
+
+.close:hover,
+.close:focus {
+    color: #49E981;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 
@@ -172,23 +188,15 @@
     }
 }
 
-@media (hover: hover) {
-    .infobutton:hover {
-        border: none;
-        background: #1BDA5E;
-        color: black;
-        box-shadow: 0px 0px 1px #777;
-        border-radius: 15px;
-    }
-    .close:hover,
-    .close:focus {
-        color: #49E981;
-        text-decoration: none;
-        cursor: pointer;
-    }
-}
+@media (hover: hover) {}
 
 @media only screen and (max-width: 480px) {
+    .content {
+        flex-flow: column nowrap;
+        justify-content: space-between;
+        align-items: center;
+        align-content: space-between;
+    }
     .titulo {
         font-size: 28px;
         margin: 2em auto;
@@ -281,10 +289,6 @@
         height: 10em;
         width: 20em;
     }
-    .imagen img {
-        height: 10em;
-        width: 20em;
-    }
     .infobutton {
         display: block
     }
@@ -296,4 +300,28 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 
-@media only screen and (min-width: 1200px) {}
+@media only screen and (min-width: 1200px) {
+    .content {
+        flex-flow: row wrap;
+    }
+    .galeria {
+        flex-basis: 24em;
+        margin: 0;
+        height: 20em;
+        /* width: 25%; */
+    }
+    .imagen img {
+        height: 8em;
+        width: 18em;
+    }
+    .imagen img {
+        height: 10em;
+        width: 20em;
+    }
+    .infobutton {
+        display: block
+    }
+    .item-info {
+        display: none;
+    }
+}
