@@ -38,11 +38,11 @@
                 </article>
 
                 <article class="form">
-                    <form>
-                        <input type="text" placeholder="Nombre" />
-                        <input type="text" placeholder="Correo Electronico" />
-                        <input type="text" placeholder="Asunto" />
-                        <textarea rows="3" placeholder="Mensaje"></textarea>
+                    <form id="formData">
+                        <input type="text" placeholder="Nombre" name="Nombre" id="Nombre" class="requerido" />
+                        <input type="text" placeholder="Correo Electronico" name="Correo" id="Correo" class="requerido" />
+                        <input type="text" placeholder="Asunto" name="Asunto" id="Asunto" class="requerido" />
+                        <textarea rows="3" placeholder="Mensaje" name="Mensaje" id="Mensaje" class="requerido"></textarea>
                         <button class="btnSubmit" type="submit">Enviar</button>
                     </form>
                 </article>
@@ -50,5 +50,6 @@
         </section>
     </main>
 </body>
+<script src="./Assets/js/utilidades.js"></script>
 
 </html>

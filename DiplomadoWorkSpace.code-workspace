@@ -5,9 +5,12 @@
 		},
 		{
 			"path": "HTML"
+		},
+		{
+			"path": "JAVASCRIPT"
 		}
 	],
     "settings": {
-        "liveServer.settings.multiRootWorkspaceName": "HTML"
+        "liveServer.settings.multiRootWorkspaceName": "JAVASCRIPT"
     }
 }

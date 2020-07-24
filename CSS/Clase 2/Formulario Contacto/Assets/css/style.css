@@ -13,9 +13,11 @@ body {
 }
 
 main {
-    background-image: url("../img/freddyeselmejor.jpg");
+    background-image: url("../img/wallpaper.jpg");
     /* filter: grayscale(100%); */
     background-position: 50% 50%;
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 100vh;
 }
 
@@ -45,6 +47,7 @@ main {
     padding: 10px !important;
     top: 10%;
     border-radius: 25px;
+    opacity: .9;
 }
 
 .container {

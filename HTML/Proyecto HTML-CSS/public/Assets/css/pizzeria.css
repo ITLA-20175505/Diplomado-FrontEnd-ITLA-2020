@@ -193,13 +193,14 @@
 @media only screen and (max-width: 480px) {
     .content {
         flex-flow: column nowrap;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
-        align-content: space-between;
+        align-content: flex-start;
     }
     .titulo {
         font-size: 28px;
         margin: 2em auto;
+        flex-basis: 0;
     }
     .galeria {
         margin: 1em auto;

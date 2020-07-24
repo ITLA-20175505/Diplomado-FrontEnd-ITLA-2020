@@ -93,6 +93,9 @@
         width: 100%;
         text-align: center;
     }
+    .galeria:hover {
+        display: none;
+    }
     .galeria #more,
     .galeria #less {
         display: none;
