@@ -5,46 +5,98 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="./Assets/css/style.css" rel="stylesheet" />
 </head>
 
 <body>
-    <main class="container">
+    <div id="ModalComponent" class="modal fade" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-center modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="ModalComponent-Title">Nueva Tarea</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" class="">&times;</span>
+          </button>
+                </div>
+                <div class="modal-body" id="ModalComponent-Body">
+                    <input type="hidden" id="IdTarea" />
+                    <div class="ml-input-group">
+                        <label for="Titulo" class="ml-label">Titulo</label>
+                        <input type="text" class="ml-input-form ml-input requerido" id="Titulo" name="Titulo" />
+                    </div>
+                    <div class="ml-input-group">
+                        <label for="Estado" class="ml-label">Estado</label>
+                        <select id="Estado" class="ml-input-form ml-select requerido">
+                                <option value=false>Pendiente</option>
+                                <option value=true>Completado</option>
+                            </select>
+                    </div>
+                    <div class="ml-input-group">
+                        <label for="Titulo" class="ml-label">Descripcion</label>
+                        <textarea class="ml-input-form ml-textarea requerido" id="Descripcion" name="Descripcion"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="action-button btn-new-hover" id="btnModalSave">Guardar</button>
+                    <button type="button" class="action-button btn-del-hover" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <main class="container-fluid">
+
+
+        <section class="bg-content">
+            <div class="bg-1"></div>
+            <div class="bg-2"></div>
+        </section>
+
         <header></header>
-        <aside class="asideBar"></aside>
+
         <section class="page-content">
 
-            <div class="content">
+            <div class="content shadow">
                 <h1 class="content-title">To-Do List APP</h1>
-                <ul class="task-list">
-                    <li class="task">
-                        <p class="task-title">Task 1</p>
-                        <i class="fa fa-check-square task-icon fa-2x"></i>
-                    </li>
-                    <li class="task">
-                        <p class="task-title">Task 2</p>
-                        <i class="fa fa-check-square task-icon fa-2x"></i>
-                    </li>
-                    <li class="task">
-                        <p class="task-title">Task 3</p>
-                        <i class="fa fa-check-square task-icon fa-2x"></i>
-                    </li>
-                    <li class="task">
-                        <p class="task-title">Task 4</p>
-                        <i class="fa fa-check-square task-icon fa-2x"></i>
-                    </li>
-                    <li class="task">
-                        <p class="task-title">Task 5</p>
-                        <i class="fa fa-check-square task-icon fa-2x"></i>
-                    </li>
-                </ul>
+                <aside class="asideBar">
+                    <button class="aside-button btn-new-hover" data-target="#ModalComponent" data-toggle="modal"> 
+                            <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                            <p class="aside-button-title">Nueva Tarea</p> 
+                    </button>
+                    <button class="aside-button" id="btnEdit" disabled> 
+                            <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                            <p class="aside-button-title">Modificar Tarea</p> 
+                    </button>
+                    <button class="aside-button btn-del-hover" id="btnDelete"> 
+                        <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                        <p class="aside-button-title">Eliminar Tarea</p> 
+                    </button>
+                    <button class="aside-button btn-complete-hover" id="btnComplete"> 
+                        <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                        <p class="aside-button-title">Marcar Completadas</p> 
+                    </button>
+                    <button class="aside-button btn-pending-hover" id="btnPending"> 
+                        <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                        <p class="aside-button-title">Marcar Pendientes</p> 
+                    </button>
+                </aside>
+                <section class="task-container scroll ">
+                    <ul class="task-list ">
+
+                    </ul>
+                    <article class="sin-tareas">
+                        <p class="text-center text-muted">
+                            No se encontro ninguna tarea.
+                        </p>
+                    </article>
+                </section>
                 <div class="actionbar">
                     <button class="action-button">
-                        <i class="fa fa-th-list" ></i>&nbsp; Todas
+                        <i class=" fa fa-th-list" ></i>&nbsp; Todas
                     </button>
                     <button class="action-button"><i class="far fa-check-circle"></i>&nbsp;Completadas</button>
                     <button class="action-button"><i class="fa fa-calendar-minus "></i>&nbsp; Incompletas</button>
-                    <button class="action-button"><i class="fa fa-calendar-plus "></i>&nbsp;Nueva Tarea</button>
+
                 </div>
             </div>
         </section>
@@ -52,5 +104,11 @@
     </main>
 </body>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+<script type="module" src="./Assets/js/main.js">
+    window.setCompletadas();
+</script>
 
 </html>
