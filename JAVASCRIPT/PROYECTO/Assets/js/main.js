@@ -8,7 +8,6 @@ $(document).ready(function() {
     // Nueva Tarea Img
     $('.sin-tareas').click(function() {
             toggleModal();
-
         })
         // REMOVER VALIDACION
     $('.ml-input,.ml-textarea').on('keyup', function() {
@@ -18,16 +17,17 @@ $(document).ready(function() {
                     $(this).removeClass("invalid-input");
                 else if ($(this).is('textarea'))
                     $(this).removeClass("invalid-textarea");
+                else if ($(this).is('select'))
+                    $(this).removeClass("invalid-select");
             }
-
         })
         // GUARDAR O MODIFICAR TAREA
     $('#btnModalSave').click(function(e) {
-            debugger
             let tarea = core.tarea;
             tarea.Titulo = $('#Titulo').val();
             tarea.Descripcion = $('#Descripcion').val();
-            tarea.IsComplete = $('#Estado').val();
+            tarea.IsComplete = ($('#Estado').val() == "true" ? true : false);
+
             tarea.IdTarea = $('#IdTarea').val();
             if (validarDatosModal())
                 if (tarea.IdTarea > 0)
@@ -36,16 +36,17 @@ $(document).ready(function() {
                     insertTarea(tarea);
             else
                 alert("todo mal");
+            verifySelectedTask();
         })
         // EDITAR TAREA
     $('#btnEdit').click(function() {
-            debugger
             let tareaHtml = $('.task-selected')[0];
             let id = $(tareaHtml).data('id');
             let tareas = core.getTareas();
             let tarea = tareas[id - 1];
-            setDatosModal(tarea);
             toggleModal();
+            setDatosModal(tarea);
+
         })
         // Marcar Tareas como Completadas 
     $('#btnComplete').click(function() {
@@ -75,6 +76,15 @@ $(document).ready(function() {
             deleteTarea(id);
         })
     })
+    $('#btnFilterAll').click(function() {
+        showTareas();
+    })
+    $('#btnFilterCompleted').click(function() {
+        showTareas(true)
+    })
+    $('#btnFilterPending').click(function() {
+        showTareas(false);
+    })
 
 
 });
@@ -87,10 +97,11 @@ function insertTarea(tarea) {
 
 function updateTarea(tarea) {
     let tareas = core.getTareas();
-    tareas[index - 1].IsComplete = tarea;
+    tareas[tarea.IdTarea - 1] = tarea;
     core.refreshTareas(tareas);
     showTareas();
     toggleModal();
+
 }
 
 function updateEstadoTarea(index, estado) {
@@ -106,72 +117,127 @@ function deleteTarea(index) {
     core.refreshTareas(tareas);
     unselectTask(index);
     showTareas();
+
 }
 
 
-function unselectTask(index) {
+function unselectTask(index, chk) {
     $(`#chk-task-${index}`).prop('checked', false);
-    $('#btnEdit').removeAttr("disabled").addClass("btn-edit-hover");
+    $('#chk-tasks').prop('checked', false);
+    verifySelectedTask(chk)
 }
 
 function toggleModal() {
     $('#ModalComponent').modal('toggle');
+    $('#IdTarea').val('');
     $('#Titulo').val('');
     $('#Descripcion').val('');
     $('#Estado').val('false');
 }
 
-async function showTareas() {
-    await $('.task-list').empty();
+function verifySelectedTask(chk) {
+    let selected = $('input[type=checkbox]:checked:not(#chk-tasks)').length;
+    let alltask = $('input[type=checkbox]:not(#chk-tasks)').length;
+    if (alltask == selected)
+        $('#chk-tasks').prop('checked', true);
+    else
+        $('#chk-tasks').prop('checked', false);
+    if (selected > 1 || selected == 0) {
+        $('#btnEdit').attr("disabled", "disabled").removeClass("btn-edit-hover");
+    } else
+        $('#btnEdit').removeAttr("disabled").addClass("btn-edit-hover");
+
+    if ($(chk).prop('checked'))
+        $(chk).parents('.task').addClass('task-selected');
+    else
+        $(chk).parents('.task').removeClass("task-selected", 1000, "swing");
+}
+
+function showTareas(state) {
+
+    $('#tasks').empty();
     let tareas = core.getTareas();
+
+    if (typeof state != 'undefined')
+        tareas = tareas.filter(function(tarea) {
+            return tarea.IsComplete == state;
+        });
     if (tareas.length > 0) {
         $('.sin-tareas').css("display", "none");
+        $('#chk-tasks').removeAttr("disabled");
+        $('.task-header .checkbox-label>.checkbox-custom').removeClass("disabled");
         for (let tarea of tareas) {
-            await appendTarea(tarea);
+            appendTarea(tarea);
         }
-    } else
+    } else {
         $('.sin-tareas').css("display", "block");
+        $('#chk-tasks').attr("disabled", "disabled");
+        $('.task-header .checkbox-label>.checkbox-custom').addClass("disabled");
+    }
+
     // CONTAR TAREAS SELECCIONADAS
-    $('input[type=checkbox]').on('click', function() {
-        let selected = $('input[type=checkbox]:checked').length;
-        if (selected > 1 || selected == 0) {
-            $('#btnEdit').attr("disabled", "disabled").removeClass("btn-edit-hover");
-        } else
-            $('#btnEdit').removeAttr("disabled").addClass("btn-edit-hover");
-        if ($(this).prop('checked'))
-            $(this).parents('.task').addClass('task-selected');
-        else
-            $(this).parents('.task').removeClass("task-selected", 1000, "swing");
+    $('input[type=checkbox]').on('click change', function() {
+        if (this.id == "chk-tasks")
+            if ($(this).prop("checked"))
+                changeSelectAllTask(true)
+            else
+                changeSelectAllTask(false)
+        verifySelectedTask(this);
+
     })
     let iconos = $('.task-icon');
     $.each(iconos, function(key, val) {
-        debugger
         $(this).on("click", function() {
-            alert("hola");
-            // debugger
-            // let id = $(val).parents(".task").data("id");
-            // let isComplete = $(val).hasAttr('.task-completed');
-            // if (isComplete)
-            //     updateEstadoTarea(id, !isComplete);
-            // else
-            //     updateEstadoTarea(id, isComplete)
+            let id = $(val).parents(".task").data("id");
+            let chk = $(this).siblings(`.checkbox-label`);
+            unselectTask(id, $(':first-child', chk));
+            let isComplete = false;
+            if ($(val).hasClass('task-completed')) {
+                isComplete = true
+            }
+            if (isComplete) {
+                updateEstadoTarea(id, false);
+                $(val).removeClass('task-completed')
+            } else {
+                updateEstadoTarea(id, true);
+                $(val).addClass('task-completed')
+            }
+
         })
     })
 }
 
+function changeSelectAllTask(state) {
+    let tasks = $('input[type=checkbox]')
+    $.each(tasks, function(key, val) {
+        let id = $(val).attr("id");
+        $(val).prop('checked', state);
+        if (id != "chk-tasks")
+            verifySelectedTask(val);
+    })
+}
+
 function appendTarea(tarea) {
-    $('.task-list').append(
-        `
-        <li class="task" data-id="${tarea.IdTarea}">
-            <label class="checkbox-label" >
-                <input type="checkbox" id="chk-task-${tarea.IdTarea}" />
-                <span class="checkbox-custom"></span>
-            </label>
-            <p class="task-title">${tarea.Titulo}</p>
-            <i class="far fa-check-circle task-icon fa-2x ${tarea.IsComplete? "task-completed":""}"></i>
-        </li>
-        `
-    )
+    let taskHtml = $(`
+    <li class="task" data-id="${tarea.IdTarea}">
+    <label class="checkbox-label" >
+        <input type="checkbox" id="chk-task-${tarea.IdTarea}" />
+        <span class="checkbox-custom"></span>
+    </label>
+    <p class="task-title">${tarea.Titulo}</p>
+    <div class="task-icon  ${tarea.IsComplete ? "task-completed":""}">
+        <i class="far fa-check-circle icon fa-2x"></i>
+    </div>
+    <p class="task-description">${tarea.Descripcion}</p>
+</li>
+    `)
+    $('#tasks').append(taskHtml)
+    let titleHtml = $('.task-title', taskHtml);
+    let descripcionHtml = $('.task-description', taskHtml);
+    titleHtml.on("click", function() {
+        $(descripcionHtml).slideToggle('slow');
+    })
+
 }
 
 function validarDatosModal() {
@@ -179,6 +245,7 @@ function validarDatosModal() {
     let camposvalidar = $('#ModalComponent .requerido');
     $.each(camposvalidar, function(key, input) {
         let val = $(input).val();
+        let id = $(input).attr("id");
         if (!val || val == "") {
             resp = false;
             if ($(this).is('input'))
@@ -187,6 +254,13 @@ function validarDatosModal() {
                 $(input).addClass("invalid-textarea");
             else if ($(this).is('select'))
                 $(input).addClass("invalid-select");
+        } else if (id == "Titulo") {
+            let invalidMessage = $(input).siblings('.invalid-message');
+            if (val.length >= 40) {
+                $(invalidMessage).html('El titulo es demasiado largo, favor resumirlo');
+                resp = false;
+            } else
+                $(invalidMessage).html('');
         }
     })
     return resp

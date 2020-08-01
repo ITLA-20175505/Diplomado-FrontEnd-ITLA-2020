@@ -24,6 +24,7 @@
                     <div class="ml-input-group">
                         <label for="Titulo" class="ml-label">Titulo</label>
                         <input type="text" class="ml-input-form ml-input requerido" id="Titulo" name="Titulo" />
+                        <label class="text-muted invalid-message"></label>
                     </div>
                     <div class="ml-input-group">
                         <label for="Estado" class="ml-label">Estado</label>
@@ -80,31 +81,73 @@
                         <p class="aside-button-title">Marcar Pendientes</p> 
                     </button>
                 </aside>
-                <section class="task-container scroll ">
-                    <ul class="task-list ">
 
-                    </ul>
-                    <article class="sin-tareas">
-                        <p class="text-center text-muted">
-                            No se encontro ninguna tarea.
-                        </p>
-                    </article>
+                <section class="task-container">
+                    <section class="task-header">
+                        <label class="checkbox-label task-header-checkbox">
+                                <input type="checkbox" id="chk-tasks" />
+                                <span class="checkbox-custom"></span>
+                            </label>
+                        <p class="task-header-title">Titulo</p>
+                        <p class="task-header-option">Estado</p>
+                        <hr/>
+                    </section>
+                    <section class="task-list scroll">
+                        <ul id="tasks">
+                        </ul>
+                        <article class="sin-tareas">
+                            <p class="text-center text-muted">
+                                No se encontro ninguna tarea.
+                            </p>
+                        </article>
+                    </section>
+
+
                 </section>
                 <div class="actionbar">
-                    <button class="action-button">
+                    <button type="button" class="action-button" id="btnFilterAll">
                         <i class=" fa fa-th-list" ></i>&nbsp; Todas
                     </button>
-                    <button class="action-button"><i class="far fa-check-circle"></i>&nbsp;Completadas</button>
-                    <button class="action-button"><i class="fa fa-calendar-minus "></i>&nbsp; Incompletas</button>
+                    <button type="button" class="action-button" id="btnFilterCompleted"><i class="far fa-check-circle" ></i>&nbsp;Completadas</button>
+                    <button type="button" class="action-button" id="btnFilterPending"><i class="fa fa-calendar-minus"></i>&nbsp; Incompletas</button>
 
                 </div>
+
+
+
+
+
             </div>
         </section>
-        <footer></footer>
+        <footer>
+            <section class="copyright">
+                <article class="copyright-text">
+                    &copy; STX &nbsp;&nbsp; DEVS
+
+                </article>
+            </section>
+            <section class="mobile-actionbar">
+                <div class="mb-action">
+                    <input type="checkbox" id="mb-toggle" checked/>
+                    <nav class="mb-actionbar-nav">
+                        <ul>
+                            <a href="http://sashatran.com" target="_blank">About</a>
+                            <a href="https://codepen.io/sashatran/pens/public/" target="_blank">Home</a>
+                            <a href="https://www.linkedin.com/in/sasha-tran-23498989/" target="_blank">Hire Me</a>
+                            <a href="https://www.youtube.com/channel/UCCATAa8MWoBuH-sR_Jlx29A" target="_blank">Subscribe</a>
+                        </ul>
+                    </nav>
+                    <label class="mb-button" for="mb-toggle"></label>
+
+                </div>
+            </section>
+
+        </footer>
+
     </main>
 </body>
 <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js" integrity="sha384-SlE991lGASHoBfWbelyBPLsUlwY1GwNDJo3jSJO04KZ33K2bwfV9YBauFfnzvynJ" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 <script type="module" src="./Assets/js/main.js">
