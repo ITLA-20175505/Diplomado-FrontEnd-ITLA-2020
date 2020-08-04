@@ -1,8 +1,8 @@
 import * as core from './core.js';
 
 
-// A $( document ).ready() block.
 $(document).ready(function() {
+    $('#mb-toggle').prop("checked", false);
     showTareas();
 
     // Nueva Tarea Img
@@ -11,45 +11,53 @@ $(document).ready(function() {
         })
         // REMOVER VALIDACION
     $('.ml-input,.ml-textarea').on('keyup', function() {
-            let val = $(this).val();
-            if (val != "") {
-                if ($(this).is('input'))
-                    $(this).removeClass("invalid-input");
-                else if ($(this).is('textarea'))
-                    $(this).removeClass("invalid-textarea");
-                else if ($(this).is('select'))
-                    $(this).removeClass("invalid-select");
-            }
-        })
-        // GUARDAR O MODIFICAR TAREA
-    $('#btnModalSave').click(function(e) {
-            let tarea = core.tarea;
-            tarea.Titulo = $('#Titulo').val();
-            tarea.Descripcion = $('#Descripcion').val();
-            tarea.IsComplete = ($('#Estado').val() == "true" ? true : false);
+        let val = $(this).val();
+        if (val != "") {
+            if ($(this).is('input'))
+                $(this).removeClass("invalid-input");
+            else if ($(this).is('textarea'))
+                $(this).removeClass("invalid-textarea");
+            else if ($(this).is('select'))
+                $(this).removeClass("invalid-select");
+        }
+    })
 
-            tarea.IdTarea = $('#IdTarea').val();
-            if (validarDatosModal())
+    // GUARDAR O MODIFICAR TAREA
+    $('#btnModalSave').click(function(e) {
+        let tarea = core.tarea;
+        tarea.Titulo = $('#Titulo').val();
+        tarea.Descripcion = $('#Descripcion').val();
+        tarea.IsComplete = ($('#Estado').val() == "true" ? true : false);
+
+        tarea.IdTarea = $('#IdTarea').val();
+        if (validarCamposRequeridos()) {
+            if (validarMaxCaracteres())
                 if (tarea.IdTarea > 0)
                     updateTarea(tarea)
                 else
                     insertTarea(tarea);
-            else
-                alert("todo mal");
-            verifySelectedTask();
+        } else
+            alert("Favor llenar los datos requeridos");
+        verifySelectedTask();
+    })
+
+    //NUEVA TAREA
+    $('#btnNew,#mb-btn-new').click(function() {
+            toggleModal();
         })
         // EDITAR TAREA
-    $('#btnEdit').click(function() {
+    $('#btnEdit,#mb-btn-edit').click(function() {
+
             let tareaHtml = $('.task-selected')[0];
             let id = $(tareaHtml).data('id');
             let tareas = core.getTareas();
             let tarea = tareas[id - 1];
-            toggleModal();
+            toggleModal(false);
             setDatosModal(tarea);
 
         })
         // Marcar Tareas como Completadas 
-    $('#btnComplete').click(function() {
+    $('#btnComplete,#mb-btn-complete').click(function() {
             let tareas = $('.task-selected');
             $.each(tareas, function(key, val) {
                 let id = $(this).data("id");
@@ -59,7 +67,7 @@ $(document).ready(function() {
             })
         })
         // Marcar Tareas como Pendientes 
-    $('#btnPending').click(function() {
+    $('#btnPending,#mb-btn-pending').click(function() {
             let tareas = $('.task-selected');
             $.each(tareas, function(key, val) {
                 let id = $(this).data("id");
@@ -69,7 +77,7 @@ $(document).ready(function() {
             })
         })
         // Eliminar Tareas
-    $('#btnDelete').click(function() {
+    $('#btnDelete,#mb-btn-delete').click(function() {
         let tareas = $('.task-selected');
         $.each(tareas, function(key, val) {
             let id = $(this).data("id");
@@ -85,6 +93,14 @@ $(document).ready(function() {
     $('#btnFilterPending').click(function() {
         showTareas(false);
     })
+
+
+    $.each($('.mb-nav-item'), function(key, val) {
+        $(this).click(function() {
+            $('#mb-toggle').prop("checked", false);
+        })
+    })
+
 
 
 });
@@ -121,40 +137,10 @@ function deleteTarea(index) {
 }
 
 
-function unselectTask(index, chk) {
-    $(`#chk-task-${index}`).prop('checked', false);
-    $('#chk-tasks').prop('checked', false);
-    verifySelectedTask(chk)
-}
 
-function toggleModal() {
-    $('#ModalComponent').modal('toggle');
-    $('#IdTarea').val('');
-    $('#Titulo').val('');
-    $('#Descripcion').val('');
-    $('#Estado').val('false');
-}
 
-function verifySelectedTask(chk) {
-    let selected = $('input[type=checkbox]:checked:not(#chk-tasks)').length;
-    let alltask = $('input[type=checkbox]:not(#chk-tasks)').length;
-    if (alltask == selected)
-        $('#chk-tasks').prop('checked', true);
-    else
-        $('#chk-tasks').prop('checked', false);
-    if (selected > 1 || selected == 0) {
-        $('#btnEdit').attr("disabled", "disabled").removeClass("btn-edit-hover");
-    } else
-        $('#btnEdit').removeAttr("disabled").addClass("btn-edit-hover");
-
-    if ($(chk).prop('checked'))
-        $(chk).parents('.task').addClass('task-selected');
-    else
-        $(chk).parents('.task').removeClass("task-selected", 1000, "swing");
-}
 
 function showTareas(state) {
-
     $('#tasks').empty();
     let tareas = core.getTareas();
 
@@ -177,6 +163,7 @@ function showTareas(state) {
 
     // CONTAR TAREAS SELECCIONADAS
     $('input[type=checkbox]').on('click change', function() {
+
         if (this.id == "chk-tasks")
             if ($(this).prop("checked"))
                 changeSelectAllTask(true)
@@ -185,6 +172,7 @@ function showTareas(state) {
         verifySelectedTask(this);
 
     })
+    verifySelectedTask()
     let iconos = $('.task-icon');
     $.each(iconos, function(key, val) {
         $(this).on("click", function() {
@@ -207,15 +195,6 @@ function showTareas(state) {
     })
 }
 
-function changeSelectAllTask(state) {
-    let tasks = $('input[type=checkbox]')
-    $.each(tasks, function(key, val) {
-        let id = $(val).attr("id");
-        $(val).prop('checked', state);
-        if (id != "chk-tasks")
-            verifySelectedTask(val);
-    })
-}
 
 function appendTarea(tarea) {
     let taskHtml = $(`
@@ -240,7 +219,7 @@ function appendTarea(tarea) {
 
 }
 
-function validarDatosModal() {
+function validarCamposRequeridos() {
     let resp = true;
     let camposvalidar = $('#ModalComponent .requerido');
     $.each(camposvalidar, function(key, input) {
@@ -254,20 +233,77 @@ function validarDatosModal() {
                 $(input).addClass("invalid-textarea");
             else if ($(this).is('select'))
                 $(input).addClass("invalid-select");
-        } else if (id == "Titulo") {
-            let invalidMessage = $(input).siblings('.invalid-message');
-            if (val.length >= 40) {
-                $(invalidMessage).html('El titulo es demasiado largo, favor resumirlo');
-                resp = false;
-            } else
-                $(invalidMessage).html('');
         }
     })
     return resp
 }
 
-function limpiarDatosModal() {
+function validarMaxCaracteres() {
+    let resp = true;
+    let camposvalidar = $('#ModalComponent .valid-length');
+    $.each(camposvalidar, function(key, input) {
+        let maxLength = $(input).data("max-length");
+        let val = $(input).val();
+        let invalidMessage = $(input).siblings('.invalid-message');
+        if (val.length >= maxLength) {
+            $(invalidMessage).html('El titulo es demasiado largo, favor resumirlo');
+            resp = false;
+        } else
+            $(invalidMessage).html('');
+    });
+    return resp;
+}
 
+
+
+function unselectTask(index, chk) {
+    $(`#chk-task-${index}`).prop('checked', false);
+    $('#chk-tasks').prop('checked', false);
+    verifySelectedTask(chk)
+}
+
+function verifySelectedTask(chk) {
+    let selected = $('input[type=checkbox]:checked:not(#chk-tasks,#mb-toggle)').length;
+    let alltask = $('input[type=checkbox]:not(#chk-tasks,#mb-toggle)').length;
+    if (alltask == selected)
+        $('#chk-tasks').prop('checked', true);
+    else
+        $('#chk-tasks').prop('checked', false);
+    if (selected > 1 || selected == 0) {
+        $('#btnEdit').attr("disabled", "disabled").removeClass("btn-edit-hover");
+        $('#mb-btn-edit').css("display", "none");
+    } else {
+        $('#btnEdit').removeAttr("disabled").addClass("btn-edit-hover");
+        $('#mb-btn-edit').css("display", "flex")
+    }
+
+
+    if ($(chk).prop('checked'))
+        $(chk).parents('.task').addClass('task-selected');
+    else
+        $(chk).parents('.task').removeClass("task-selected", 1000, "swing");
+}
+
+function changeSelectAllTask(state) {
+    let tasks = $('input[type=checkbox]')
+    $.each(tasks, function(key, val) {
+        let id = $(val).attr("id");
+        $(val).prop('checked', state);
+        if (id != "chk-tasks")
+            verifySelectedTask(val);
+    })
+}
+
+function toggleModal(isNew = true) {
+    if (!isNew)
+        $('#ModalComponent-Title').html("Modificar Tarea")
+    else
+        $('#ModalComponent-Title').html("Nueva Tarea")
+    $('#ModalComponent').modal('toggle');
+    $('#IdTarea').val('');
+    $('#Titulo').val('');
+    $('#Descripcion').val('');
+    $('#Estado').val('false');
 }
 
 function setDatosModal(tarea) {

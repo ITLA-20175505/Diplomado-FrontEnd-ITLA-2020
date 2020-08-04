@@ -57,14 +57,15 @@ body:not(.modal>*) {
 /* Handle */
 
  ::-webkit-scrollbar-thumb {
-    background: rgba(239, 118, 122, .8);
+    /* background: rgba(239, 118, 122, .8); */
+    background: rgba(0, 168, 150, .8)
 }
 
 
 /* Handle on hover */
 
  ::-webkit-scrollbar-thumb:hover {
-    background: #EF767A;
+    background: var(--color13);
 }
 
 .bg-content {
@@ -87,9 +88,22 @@ body:not(.modal>*) {
     grid-area: bg2;
 }
 
+.bg-color {
+    background-color: var(--color13);
+    color: var(--color2);
+}
+
+.btn-new {
+    background-color: var(--color5) !important;
+}
+
 .btn-new-hover:hover {
     background-color: var(--color5);
     color: var(--color1);
+}
+
+.btn-edit {
+    background-color: var(--color9) !important;
 }
 
 .btn-edit-hover:hover {
@@ -97,14 +111,26 @@ body:not(.modal>*) {
     /* color: var(--color1); */
 }
 
+.btn-del {
+    background-color: var(--color12) !important;
+}
+
 .btn-del-hover:hover {
     background-color: var(--color12);
     color: var(--color1);
 }
 
+.btn-complete {
+    background-color: var(--color8) !important;
+}
+
 .btn-complete-hover:hover {
     background-color: var(--color8);
     color: var(--color1);
+}
+
+.btn-pending {
+    background-color: var(--color6) !important;
 }
 
 .btn-pending-hover:hover {
@@ -173,7 +199,8 @@ header {
     flex-flow: column nowrap;
     justify-content: space-around;
     align-items: center;
-    box-shadow: var(--color3) 2px 2px 4px 2px
+    box-shadow: var(--color3) 2px 2px 4px 2px;
+    font-size: 16px !important;
 }
 
 .aside-button {
@@ -193,6 +220,7 @@ header {
     justify-content: center;
     box-sizing: border-box;
     outline: none !important;
+    font-size: 1em;
 }
 
 .aside-button>* {
@@ -242,10 +270,11 @@ header {
     align-content: flex-start;
     align-items: flex-start;
     background-color: transparent;
+    font-size: 22px !important;
 }
 
 .task-header>* {
-    font-size: 22px;
+    font-size: 1em !important;
     font-weight: bold;
     margin: 0 !important;
 }
@@ -310,13 +339,14 @@ hr {
     display: flex !important;
     flex-flow: row wrap !important;
     background-color: transparent;
+    font-size: 18px !important;
 }
 
 .task-title {
     transition: all 300ms;
     margin: 0 .5em;
     align-self: center;
-    font-size: 20px;
+    font-size: 1em !important;
     font-weight: bold;
     text-align: justify;
     flex: 1 0 0;
@@ -362,6 +392,7 @@ hr {
     flex-flow: row nowrap;
     align-items: center;
     justify-content: space-around;
+    font-size: 18px !important;
 }
 
 .action-button {
@@ -372,7 +403,7 @@ hr {
     background-color: var(--color1);
     box-shadow: var(--color2) 1px 1px 2px 1px;
     border: .2em solid transparent;
-    font-size: 16px;
+    font-size: 1em !important;
     border-radius: 5px;
     font-weight: 500;
     cursor: pointer;
@@ -598,8 +629,10 @@ footer {
 .mb-action {
     width: 20%;
     margin: 0 auto !important;
-    justify-content: center;
-    align-items: flex-end;
+    display: flex !important;
+    flex-flow: row wrap !important;
+    justify-content: center !important;
+    align-items: center !important;
 }
 
 #mb-toggle {
@@ -611,12 +644,13 @@ footer {
     z-index: 999;
     width: 43px;
     height: 43px;
-    background: var(--color12);
+    background: var(--color13);
     border-radius: 100%;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 0 2em !important;
     /* top: -12px */
 }
 
@@ -642,20 +676,36 @@ footer {
 .mb-actionbar-nav {
     opacity: 0;
     transition: all 0.4s ease-in-out;
-    background: #fff;
-    width: 100%;
-    border-radius: 5px;
-    transform: translateY(0%);
-    box-shadow: 2px 3px 10px 0 rgba(81, 81, 81, 0.1);
-    border: 1px solid #e4e4e4;
-    padding: 10px;
+    /* width: 100%; */
+    /* border-radius: 5px; */
+    transform: translateY(-60%);
+    /* border: 1px solid #e4e4e4; */
+    /* padding: 10px; */
 }
 
 .mb-actionbar-nav ul {
+    width: 100% !important;
     margin: 0;
     padding: 0;
     display: flex;
+    flex-flow: column;
     flex-direction: column;
+    list-style-type: none;
+    align-items: center;
+}
+
+.mb-actionbar-nav ul li {
+    transition: all 300ms ease;
+    width: 34px !important;
+    height: 35px !important;
+    border-radius: 25px !important;
+    text-align: center;
+    margin: 10px 0 !important;
+    display: flex;
+    justify-content: center !important;
+    align-items: center;
+    box-shadow: 0 1px 1px 0 var(--color3);
+    cursor: pointer;
 }
 
 .mb-actionbar-nav a {
@@ -675,7 +725,7 @@ footer {
 
 #mb-toggle:checked~.mb-actionbar-nav {
     opacity: 1;
-    transform: translateY(10%);
+    transform: translateY(-85%);
 }
 
 #mb-toggle:checked~.mb-button:before {
@@ -690,35 +740,61 @@ footer {
 /* Small devices (portrait tablets and large phones, 600px and up) */
 
 @media only screen and (max-width: 414px) {
-    .copyright {
-        flex: 1 0 90% !important;
-        align-self: center;
+    .container-fluid {
+        grid-template-columns: .5fr 1fr !important;
+        grid-template-rows: 1fr 3em !important;
+        margin: 0 !important
     }
-    .copyright-text {
-        align-self: flex-end;
+    .page-content {
+        margin: 0 8px !important;
+        padding: 0 !important;
+        width: 96vw!important;
+    }
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 5em 30em auto !important;
+        grid-template-columns: 1fr !important;
+        height: 100% !important;
+        width: 100% !important;
+        gap: 1em !important;
+        font-size: 14px !important;
+    }
+    .asideBar {
+        display: none;
+    }
+    /* 
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 10% 75% 15% !important;
+        grid-template-columns: 1fr !important;
+        height: 100% !important;
+        width: 100% !important;
+        gap: 1em !important;
+        font-size: 14px !important;
+    } */
+    .bg-content {
+        height: 100% !important;
+    }
+    .copyright {
+        flex: 1 0 80% !important;
+        align-self: center;
+        justify-content: flex-end !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     .mobile-actionbar {
         margin: 0 !important;
         padding: 0 !important;
         display: block !important;
-        flex: 1 0 10% !important;
     }
     .mb-action {
         height: 8em !important;
     }
-    .page-content {
+    /* .page-content {
         margin: 0 1.5em !important
-    }
+    } */
     .asideBar {
         display: none;
-    }
-    .content {
-        grid-template-areas: "title" "task" "actionbar" !important;
-        grid-template-rows: 10% 80% 10% !important;
-        grid-template-columns: 1fr !important;
-        height: 100% !important;
-        width: 100% !important;
-        gap: 1em !important
     }
     .action-button {
         font-size: 12px !important;
@@ -726,7 +802,7 @@ footer {
         flex: 0 0 1fr !important;
     }
     .sin-tareas {
-        height: 410px !important;
+        height: 350px !important;
         font-size: 24px !important;
         justify-content: center !important;
     }
@@ -736,57 +812,10 @@ footer {
     .sin-tareas>p {
         padding: 0 2em !important;
     }
-}
-
-@media only screen and (max-width: 480px) and (min-width: 414px) {
-    .content {
-        grid-template-areas: "title" "task" "actionbar" !important;
-        grid-template-rows: 10% 75% 15% !important;
-        grid-template-columns: 1fr !important;
-    }
-    /* .asideBar {
-            display: none;
-        } */
-    .task {
-        font-size: 12px !important;
-    }
-    /*BEGIN  ACTION BUTTON*/
-    .actionbar {
-        align-items: flex-start;
-    }
-    .action-button {
-        font-size: 15px !important;
-        padding: 0 !important;
-    }
-    /*ENND  ACTION BUTTON*/
-    .container-fluid {
-        grid-template-columns: .5fr 1fr !important;
-        grid-template-rows: 1fr 8em !important;
-    }
-}
-
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-
-@media only screen and (max-width: 600px) and (min-width: 480px) {
-    .content {
-        grid-template-areas: "title" "task" "actionbar" !important;
-        grid-template-rows: 10% 75% 15% !important;
-        grid-template-columns: 1fr !important;
-    }
-    .asideBar {
-        display: none;
-    }
-    .task {
-        font-size: 16px !important;
-    }
-    .container-fluid {
-        grid-template-columns: .5fr 1fr !important;
-        grid-template-rows: 1fr 8em !important;
-    }
     /*BEGIN  TASK LIST*/
     .task-header {
-        margin: 0 .5em !important;
+        width: 100% !important;
+        margin: 0 !important;
         padding: 0 1.5em !important;
         justify-content: flex-start;
         font-size: 18px !important;
@@ -797,6 +826,220 @@ footer {
     }
     .task-header .checkbox-label input:checked~.checkbox-custom {
         border: 2px solid var(--color2) !important;
+    }
+    hr {
+        flex: 0 1 100% !important;
+    }
+    .task-header-title {
+        flex: 1 0 70% !important;
+        /* margin: 0 1em !important; */
+        font-size: 1em !important;
+    }
+    .task-header-option {
+        flex: 0 0 20% !important;
+        font-size: 1em !important;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    .task {
+        padding: .5rem 0 !important;
+        font-size: 14px !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10% !important;
+    }
+    #tasks {
+        padding: 0 10px;
+    }
+    .task-title {
+        font-size: 1em !important;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 11%;
+    }
+    .task-description {
+        font-size: 1em !important;
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    .task .checkbox-label .checkbox-custom {
+        margin: 8px 0 !important;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    /* CHECKBOX CHECKED STYLE */
+    .checkbox-label input:checked~.checkbox-custom::after {
+        left: 4px;
+        top: 2px;
+        width: 6px;
+        height: 8px;
+    }
+    .content-title {
+        font-size: 36px !important;
+    }
+    .task-list {
+        width: 100% !important;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 10% !important;
+    }
+    .ml-input-group {
+        font-size: 12px !important;
+    }
+    .container-fluid {
+        overflow-y: hidden;
+    }
+}
+
+@media only screen and (max-width: 480px) and (min-width: 415px) {
+    .container-fluid {
+        grid-template-columns: .5fr 1fr !important;
+        grid-template-rows: 1fr 3em !important;
+    }
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 5em 24em auto !important;
+        grid-template-columns: 1fr !important;
+    }
+    .asideBar {
+        display: none;
+    }
+    .task {
+        font-size: 14px !important;
+    }
+    /*BEGIN  ACTION BUTTON*/
+    .actionbar {
+        align-items: flex-start;
+    }
+    .action-button {
+        font-size: 12px !important;
+        padding: .2rem 1rem !important;
+        flex: 0 0 1fr !important;
+    }
+    /*ENND  ACTION BUTTON*/
+    /*BEGIN  TASK LIST*/
+    /*BEGIN  TASK LIST*/
+    .task-header {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 1.5em !important;
+        justify-content: flex-start;
+        font-size: 18px !important;
+    }
+    .task-header .checkbox-label {
+        margin: 0 !important;
+        flex: 0 !important;
+    }
+    .task-header .checkbox-label input:checked~.checkbox-custom {
+        border: 2px solid var(--color2) !important;
+    }
+    hr {
+        flex: 0 1 100% !important;
+    }
+    .task-header-title {
+        flex: 1 0 70% !important;
+        /* margin: 0 1em !important; */
+        font-size: 1em !important;
+    }
+    .task-header-option {
+        flex: 0 0 20% !important;
+        font-size: 1em !important;
+    }
+    .checkbox-custom {
+        height: 18px !important;
+        width: 18px !important;
+    }
+    .task {
+        padding: .5rem 0 !important;
+    }
+    .task .checkbox-label {
+        margin: 0;
+        flex: 0 0 10% !important;
+    }
+    #tasks {
+        padding: 0 10px;
+        font-size: 16px !important;
+    }
+    .task-title {
+        font-size: 1em !important;
+        word-wrap: break-word;
+        overflow: hidden;
+        line-height: 1.5em;
+    }
+    .task-icon {
+        font-size: 1em !important;
+        flex: 0 0 10%;
+    }
+    .task-description {
+        font-size: 1em !important;
+        display: none;
+        word-wrap: break-word;
+        overflow: hidden;
+    }
+    /* CHECKBOX CHECKED STYLE */
+    .checkbox-label input:checked~.checkbox-custom::after {
+        left: 4px;
+        top: 2px;
+        width: 6px;
+        height: 8px;
+    }
+    .mobile-actionbar {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+    .mb-action {
+        height: 8em !important;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+
+@media only screen and (max-width: 600px) and (min-width: 481px) {
+    .container-fluid {
+        grid-template-columns: .5fr 1fr !important;
+        grid-template-rows: 1fr 3em !important;
+    }
+    .content {
+        grid-template-areas: "title" "task" "actionbar" !important;
+        grid-template-rows: 5em 20em auto !important;
+        grid-template-columns: 1fr !important;
+    }
+    .asideBar {
+        display: none;
+    }
+    .task {
+        font-size: 16px !important;
+    }
+    /*BEGIN  TASK LIST*/
+    .task-header {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 1.5em !important;
+        justify-content: flex-start;
+        font-size: 18px !important;
+    }
+    .task-header .checkbox-label {
+        margin: 0 !important;
+        flex: 0 !important;
+    }
+    .task-header .checkbox-label input:checked~.checkbox-custom {
+        border: 2px solid var(--color2) !important;
+    }
+    hr {
+        flex: 0 1 100% !important;
     }
     .task-header-title {
         flex: 1 0 70% !important;
@@ -838,7 +1081,7 @@ footer {
         height: 18px !important;
         width: 18px !important;
     }
-    .checkbox-label .checkbox-custom {
+    .task .checkbox-label .checkbox-custom {
         margin: 9px 0 !important;
     }
     /* CHECKBOX CHECKED STYLE */
@@ -849,12 +1092,32 @@ footer {
         height: 8px;
     }
     /*END  TASK LIST*/
+    .actionbar {
+        font-size: 16px !important;
+    }
+    #ModalComponent-Body {
+        font-size: 15px !important;
+    }
+    .mobile-actionbar {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: block !important;
+    }
+    .mb-action {
+        height: 8em !important;
+    }
+    .action-button {
+        padding: .2rem 1rem !important;
+    }
 }
 
 
 /* Medium devices (landscape tablets, 768px and up) */
 
-@media only screen and (max-width: 768px) and (min-width: 600px) {
+@media only screen and (max-width: 768px) and (min-width: 601px) {
+    .container-fluid {
+        grid-template-rows: 88% 8% !important;
+    }
     .page-content {
         margin: 0 1em !important;
         width: 100%;
@@ -938,8 +1201,8 @@ footer {
         height: 18px !important;
         width: 18px !important;
     }
-    .checkbox-label .checkbox-custom {
-        margin: 9px 0 !important;
+    .task .checkbox-label .checkbox-custom {
+        margin: 12px 0 !important;
     }
     /* CHECKBOX CHECKED STYLE */
     .checkbox-label input:checked~.checkbox-custom::after {
@@ -968,14 +1231,14 @@ footer {
 
 /* Large devices (laptops/desktops, 992px and up) */
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 992px) and (min-width: 769px) {
     .container-fluid {
         width: 100% !important;
         display: grid !important;
         /* grid-template-columns: repeat(4, 1fr); */
         grid-template-columns: .5fr 1fr !important;
         /* grid-template-rows: 4em 1fr 2em; */
-        grid-template-rows: 88% 12% !important;
+        grid-template-rows: 88% 8% !important;
         grid-template-areas: "content content" "footer footer " !important;
         gap: 1em;
         height: 100vh !important;

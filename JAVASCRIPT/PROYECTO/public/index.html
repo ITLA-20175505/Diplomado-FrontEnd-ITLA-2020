@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>ToDo List App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="./Assets/css/style.css" rel="stylesheet" />
 </head>
@@ -23,7 +23,7 @@
                     <input type="hidden" id="IdTarea" />
                     <div class="ml-input-group">
                         <label for="Titulo" class="ml-label">Titulo</label>
-                        <input type="text" class="ml-input-form ml-input requerido" id="Titulo" name="Titulo" />
+                        <input type="text" class="ml-input-form ml-input requerido valid-length" data-max-length=40 id="Titulo" name="Titulo" />
                         <label class="text-muted invalid-message"></label>
                     </div>
                     <div class="ml-input-group">
@@ -60,9 +60,9 @@
             <div class="content shadow">
                 <h1 class="content-title">To-Do List APP</h1>
                 <aside class="asideBar">
-                    <button class="aside-button btn-new-hover" data-target="#ModalComponent" data-toggle="modal"> 
-                            <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
-                            <p class="aside-button-title">Nueva Tarea</p> 
+                    <button class="aside-button btn-new-hover" id="btnNew">
+                    <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
+                    <p class="aside-button-title">Nueva Tarea</p>
                     </button>
                     <button class="aside-button" id="btnEdit" disabled> 
                             <i class="fa-2x fa fa-newspaper aside-button-icon"></i>
@@ -128,17 +128,19 @@
             </section>
             <section class="mobile-actionbar">
                 <div class="mb-action">
+
                     <input type="checkbox" id="mb-toggle" checked/>
+
+                    <label class="mb-button" for="mb-toggle"></label>
                     <nav class="mb-actionbar-nav">
-                        <ul>
-                            <a href="http://sashatran.com" target="_blank">About</a>
-                            <a href="https://codepen.io/sashatran/pens/public/" target="_blank">Home</a>
-                            <a href="https://www.linkedin.com/in/sasha-tran-23498989/" target="_blank">Hire Me</a>
-                            <a href="https://www.youtube.com/channel/UCCATAa8MWoBuH-sR_Jlx29A" target="_blank">Subscribe</a>
+                        <ul class="mb-nav-list">
+                            <li title="Nueva Tarea" class="mb-nav-item bg-color" id="mb-btn-new" id="mb-btn-new"><i class="fa fa-plus"></i> </li>
+                            <li title="Modificar Tarea" class="mb-nav-item bg-color" id="mb-btn-edit"><i class="fa fa-pencil-alt"></i> </li>
+                            <li title="Eliminar Tarea" class="mb-nav-item bg-color" id="mb-btn-delete"><i class="fa fa-trash"></i> </li>
+                            <li title="Marcar Completadas" class="mb-nav-item bg-color" id="mb-btn-complete"><i class="fas fa-check"></i> </li>
+                            <li title="Marcar Pendientes" class="mb-nav-item bg-color" id="mb-btn-pending"><i class="fa fa-minus"></i> </li>
                         </ul>
                     </nav>
-                    <label class="mb-button" for="mb-toggle"></label>
-
                 </div>
             </section>
 
